@@ -1,181 +1,466 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guías y Tutoriales | ConectaLab</title>
-  <meta name="description" content="Guías prácticas y tutoriales sobre servicios profesionales">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../css/styles.css" rel="stylesheet">
-</head>
-<body id="top">
-  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Viewport optimizado para móvil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Guías y Tutoriales — ConectaLab | Aprende a usar la plataforma</title>
+    <meta
+      name="description"
+      content="Guías prácticas y tutoriales sobre cómo usar ConectaLab. Aprendé cómo contratar servicios, verificar profesionales y aprovechar al máximo nuestra plataforma."
+    />
+    <meta name="keywords" content="guías, tutoriales, cómo usar, ConectaLab, ayuda, manual, instrucciones" />
+    <meta name="author" content="ConectaLab" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://conectalab.com.ar/pages/guias.html" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://conectalab.com.ar/pages/guias.html" />
+    <meta property="og:title" content="Guías y Tutoriales — ConectaLab" />
+    <meta property="og:description" content="Aprendé cómo usar ConectaLab con nuestras guías prácticas y tutoriales." />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/favicon.webp" type="image/webp" />
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Guías y Tutoriales - ConectaLab",
+      "description": "Guías prácticas y tutoriales sobre cómo usar ConectaLab",
+      "url": "https://conectalab.com.ar/pages/guias.html"
+    }
+    </script>
+    
+    <!-- Google Analytics - Carga diferida para no bloquear render -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+      
+      // Cargar Analytics después de que la página cargue
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(script);
+      });
+    </script>
 
-  <a href="#top" class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle" style="width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;" aria-label="Volver arriba">↑</a>
+    <!-- Preconnect para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
+    <!-- Fuentes con font-display para mejor performance -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
 
-  <!-- Navbar -->
-  <header class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="../index.html">
-        <span class="fs-4">⚡</span><span>ConectaLab</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <nav id="menu" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-          <li class="nav-item"><a class="nav-link active" href="guias.html">Guías</a></li>
-        </ul>
-      </nav>
+  <body id="top">
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Botón volver arriba -->
+    <a
+      href="#top"
+      class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle back-to-top"
+      aria-label="Volver arriba"
+      id="back-to-top"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
+    <header class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2"
+          href="../index.html"
+          aria-label="Inicio ConectaLab"
+        >
+          <span class="fs-4">⚡</span>
+          <span>ConectaLab</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainMenu"
+          aria-controls="mainMenu"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <nav id="mainMenu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="guias.html" aria-current="page">Guías</a>
+            </li>
+            
+            <!-- Selector de Temas -->
+            <li class="nav-item dropdown ms-lg-3">
+              <button
+                id="theme-toggle"
+                class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+                type="button"
+                aria-label="Cambiar tema"
+                style="width: 38px; height: 38px"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                title="Temas"
+              >
+                <i class="bi bi-palette-fill fs-5" id="theme-icon"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" id="theme-menu">
+                <li><h6 class="dropdown-header">Temas</h6></li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="light" type="button">
+                    <i class="bi bi-sun me-2"></i>Claro
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="dark" type="button">
+                    <i class="bi bi-moon me-2"></i>Oscuro
+                  </button>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><h6 class="dropdown-header">Esquemas de Color</h6></li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="blue" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #2563eb; border-radius: 3px;"></span>Azul (Default)
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="green" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #10b981; border-radius: 3px;"></span>Verde
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="purple" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></span>Púrpura
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="orange" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #f59e0b; border-radius: 3px;"></span>Naranja
+                  </button>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Menú de Usuario -->
+            <li class="nav-item dropdown ms-lg-2">
+              <button
+                class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center position-relative"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 38px; height: 38px"
+                aria-label="Menú de usuario"
+              >
+                <i class="bi bi-person-fill fs-5"></i>
+                <span id="favoritos-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">
+                  0
+                </span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
+                <li>
+                  <a class="dropdown-item" href="inicio-sesion.html">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="registro.html">
+                    <i class="bi bi-person-plus me-2"></i>Registrarse
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="perfil.html" id="perfil-link" style="display: none;">
+                    <i class="bi bi-person-circle me-2"></i>Mi Perfil
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="favoritos-link">
+                    <i class="bi bi-heart me-2"></i>Favoritos
+                    <span id="favoritos-count" class="badge bg-primary rounded-pill ms-2">0</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb-container">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Guías</li>
+          </ol>
+        </nav>
+      </div>
     </div>
-  </header>
 
-  <!-- Breadcrumbs -->
-  <div class="breadcrumb-container">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Guías</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
+    <!-- Header -->
+    <section class="page-header text-white text-center" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);">
+      <div class="container">
+        <h1 class="fw-bold">Guías y Tutoriales</h1>
+        <p class="opacity-75">Aprendé cómo usar ConectaLab con nuestras guías prácticas</p>
+      </div>
+    </section>
 
-  <!-- Header -->
-  <section class="page-header text-white text-center" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);">
-    <div class="container">
-      <h1 class="fw-bold">Guías y Tutoriales</h1>
-      <p class="opacity-75">Aprendé sobre servicios profesionales con nuestras guías prácticas</p>
-    </div>
-  </section>
-
-  <!-- Contenido -->
-  <main id="main-content" class="py-5" tabindex="-1">
-    <div class="container">
-      <div class="row g-4">
-        <!-- Guía 1 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="card h-100 card-raise">
-            <div class="card-body">
-              <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="bg-primary bg-opacity-10 rounded-circle p-3">
-                  <i class="bi bi-lightbulb text-primary fs-4"></i>
-                </div>
-                <h3 class="h5 mb-0">Guía para Contratar Servicios</h3>
-              </div>
-              <p class="text-muted">Pasos esenciales para contratar profesionales de confianza...</p>
-              <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
-            </div>
+    <!-- Contenido -->
+    <main id="main-content" class="py-5" tabindex="-1">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center">
+            <p class="lead text-muted">
+              Encontrá toda la información que necesitás para aprovechar al máximo ConectaLab. 
+              Desde cómo contratar un servicio hasta cómo gestionar tu perfil profesional.
+            </p>
           </div>
         </div>
-
-        <!-- Guía 2 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card h-100 card-raise">
-            <div class="card-body">
-              <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="bg-success bg-opacity-10 rounded-circle p-3">
-                  <i class="bi bi-check-circle text-success fs-4"></i>
+        
+        <div class="row g-4">
+          <!-- Guía 1 -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up">
+            <div class="card h-100 card-raise shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-lightbulb text-primary fs-4"></i>
+                  </div>
+                  <h3 class="h5 mb-0">Guía para Contratar Servicios</h3>
                 </div>
-                <h3 class="h5 mb-0">Cómo Verificar un Profesional</h3>
+                <p class="text-muted">Pasos esenciales para contratar profesionales de confianza. Aprendé cómo buscar, comparar y contactar profesionales en nuestra plataforma.</p>
+                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
               </div>
-              <p class="text-muted">Aprendé a verificar credenciales y referencias antes de contratar...</p>
-              <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
             </div>
           </div>
-        </div>
 
-        <!-- Guía 3 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card h-100 card-raise">
-            <div class="card-body">
-              <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="bg-warning bg-opacity-10 rounded-circle p-3">
-                  <i class="bi bi-shield-check text-warning fs-4"></i>
+          <!-- Guía 2 -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 card-raise shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-check-circle text-success fs-4"></i>
+                  </div>
+                  <h3 class="h5 mb-0">Cómo Verificar un Profesional</h3>
                 </div>
-                <h3 class="h5 mb-0">Presupuestos y Contratos</h3>
+                <p class="text-muted">Aprendé a verificar credenciales, referencias y reseñas antes de contratar. Consejos para identificar profesionales confiables.</p>
+                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
               </div>
-              <p class="text-muted">Todo lo que necesitás saber sobre presupuestos y acuerdos...</p>
-              <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
             </div>
           </div>
-        </div>
 
-        <!-- Guía 4 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="card h-100 card-raise">
-            <div class="card-body">
-              <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="bg-info bg-opacity-10 rounded-circle p-3">
-                  <i class="bi bi-question-circle text-info fs-4"></i>
+          <!-- Guía 3 -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 card-raise shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-shield-check text-warning fs-4"></i>
+                  </div>
+                  <h3 class="h5 mb-0">Presupuestos y Contratos</h3>
                 </div>
-                <h3 class="h5 mb-0">Mantenimiento Preventivo</h3>
+                <p class="text-muted">Todo lo que necesitás saber sobre presupuestos, acuerdos y contratos. Cómo negociar y formalizar tus trabajos de forma segura.</p>
+                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
               </div>
-              <p class="text-muted">Consejos para mantener tu hogar en perfecto estado...</p>
-              <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
             </div>
           </div>
-        </div>
 
-        <!-- Guía 5 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card h-100 card-raise">
-            <div class="card-body">
-              <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="bg-danger bg-opacity-10 rounded-circle p-3">
-                  <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
+          <!-- Guía 4 -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up">
+            <div class="card h-100 card-raise shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-question-circle text-info fs-4"></i>
+                  </div>
+                  <h3 class="h5 mb-0">Mantenimiento Preventivo</h3>
                 </div>
-                <h3 class="h5 mb-0">Emergencias en el Hogar</h3>
+                <p class="text-muted">Consejos para mantener tu hogar en perfecto estado y evitar problemas mayores. Calendario de mantenimiento recomendado.</p>
+                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
               </div>
-              <p class="text-muted">Qué hacer ante emergencias eléctricas, de plomería, etc...</p>
-              <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
             </div>
           </div>
-        </div>
 
-        <!-- Guía 6 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card h-100 card-raise">
-            <div class="card-body">
-              <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="bg-primary bg-opacity-10 rounded-circle p-3">
-                  <i class="bi bi-star text-primary fs-4"></i>
+          <!-- Guía 5 -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 card-raise shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
+                  </div>
+                  <h3 class="h5 mb-0">Emergencias en el Hogar</h3>
                 </div>
-                <h3 class="h5 mb-0">Cómo Calificar un Servicio</h3>
+                <p class="text-muted">Qué hacer ante emergencias eléctricas, de plomería u otras. Pasos inmediatos y cómo contactar profesionales de urgencia.</p>
+                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
               </div>
-              <p class="text-muted">Guía para dejar reseñas útiles y constructivas...</p>
-              <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+            </div>
+          </div>
+
+          <!-- Guía 6 -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 card-raise shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-star text-primary fs-4"></i>
+                  </div>
+                  <h3 class="h5 mb-0">Cómo Calificar un Servicio</h3>
+                </div>
+                <p class="text-muted">Guía para dejar reseñas útiles y constructivas. Tu opinión ayuda a otros usuarios a tomar mejores decisiones.</p>
+                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <!-- Footer -->
-  <footer class="py-4 bg-dark text-white text-center">
-    <div class="container small">
-      <div class="fw-semibold">© 2025 ConectaLab | Todos los derechos reservados.</div>
-      <nav class="footer-links d-flex justify-content-center align-items-center gap-3 mt-2 flex-wrap">
-        <a href="contacto.html" class="link-light text-decoration-none">Contacto</a>
-        <span class="text-white-50">•</span>
-        <a href="politica-privacidad.html" class="link-light text-decoration-none">Política de Privacidad</a>
-        <span class="text-white-50">•</span>
-        <a href="terminos-condiciones.html" class="link-light text-decoration-none">Términos y Condiciones</a>
-      </nav>
-    </div>
-  </footer>
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="py-5 bg-dark text-white">
+      <div class="container">
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">
+              <span class="fs-4">⚡</span> ConectaLab
+            </h5>
+            <p class="text-white-50 small">
+              Conectamos profesionales con clientes en San Nicolás de los Arroyos y alrededores.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Enlaces rápidos</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="servicios.html" class="text-white-50 text-decoration-none small">Servicios</a>
+              </li>
+              <li class="mb-2">
+                <a href="sobre.html" class="text-white-50 text-decoration-none small">Sobre Nosotros</a>
+              </li>
+              <li class="mb-2">
+                <a href="contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+              </li>
+              <li class="mb-2">
+                <a href="guias.html" class="text-white-50 text-decoration-none small">Guías</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Seguinos</h5>
+            <div class="d-flex gap-3 mb-3">
+              <a href="#" class="text-white-50 fs-5" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="#" class="text-white-50 fs-5" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="text-white-50 fs-5" aria-label="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-secondary" />
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center mb-3">
+              <small class="text-white-50">© 2025 ConectaLab | Todos los derechos reservados.</small>
+            </div>
+            <nav
+              class="footer-links d-flex justify-content-center align-items-center gap-3 flex-wrap"
+              aria-label="Enlaces legales"
+            >
+              <a href="contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+              <span class="text-white-50">•</span>
+              <a href="guias.html" class="text-white-50 text-decoration-none small">Guías</a>
+              <span class="text-white-50">•</span>
+              <a href="politica-privacidad.html" class="text-white-50 text-decoration-none small">Política de Privacidad</a>
+              <span class="text-white-50">•</span>
+              <a href="terminos-condiciones.html" class="text-white-50 text-decoration-none small">Términos y Condiciones</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/main.js"></script>
-</body>
+    <!-- ============================================
+         SCRIPTS - Optimizados para performance
+         ============================================ -->
+    <!-- Bootstrap JS - Defer para no bloquear render -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <!-- JavaScript propio - Defer para mejor performance -->
+    <script src="../js/main.js" defer></script>
+  </body>
 </html>
-
