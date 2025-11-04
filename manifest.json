@@ -1,0 +1,43 @@
+{
+  "name": "ConectaLab",
+  "short_name": "ConectaLab",
+  "description": "Plataforma para conectar profesionales y clientes en San Nicolás de los Arroyos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "social"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Servicios",
+      "short_name": "Servicios",
+      "description": "Ver todos los servicios disponibles",
+      "url": "/pages/servicios.html",
+      "icons": [{ "src": "img/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "description": "Contactanos",
+      "url": "/pages/contacto.html",
+      "icons": [{ "src": "img/favicon.png", "sizes": "96x96" }]
+    }
+  ]
+}
+

@@ -3,53 +3,140 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ConectaLab — Profesionales locales</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>ConectaLab — Profesionales locales en San Nicolás</title>
     <meta
       name="description"
-      content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos. Encontrá servicios locales de confianza."
+      content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos. Encontrá servicios locales de confianza: electricistas, plomeros, carpinteros y más."
     />
-
+    <meta name="keywords" content="profesionales, servicios, San Nicolás, electricistas, plomeros, carpinteros, diseño gráfico, trabajos locales" />
+    <meta name="author" content="ConectaLab" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://conectalab.com.ar/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://conectalab.com.ar/" />
+    <meta property="og:title" content="ConectaLab — Profesionales locales" />
+    <meta property="og:description" content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos. Encontrá servicios locales de confianza." />
+    <meta property="og:image" content="https://conectalab.com.ar/img/favicon.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://conectalab.com.ar/" />
+    <meta property="twitter:title" content="ConectaLab — Profesionales locales" />
+    <meta property="twitter:description" content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos." />
+    
     <!-- Favicon -->
     <link rel="icon" href="img/favicon.png" type="image/png" />
-
-    <!-- Fuentes y Bootstrap -->
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ConectaLab" />
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ConectaLab",
+      "description": "Plataforma para conectar profesionales y clientes en San Nicolás de los Arroyos",
+      "url": "https://conectalab.com.ar",
+      "logo": "https://conectalab.com.ar/img/favicon.png",
+      "image": "https://conectalab.com.ar/img/ciudad.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Nicolás de los Arroyos",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+54-336-402-2033",
+        "contactType": "customer service",
+        "email": "contacto@conectalab.com.ar",
+        "availableLanguage": "Spanish"
+      },
+      "sameAs": [
+        "https://www.instagram.com/conectalab",
+        "https://www.facebook.com/conectalab"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1200"
+      },
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "City",
+        "name": "San Nicolás de los Arroyos"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+    
+    <!-- Preconnect para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
+    <!-- Fuentes -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
+    
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
+    
     <!-- Estilos propios -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <body id="top">
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
     <!-- Botón volver arriba -->
     <a
       href="#top"
-      class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle"
-      style="
-        width: 45px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
-      "
+      class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle back-to-top"
       aria-label="Volver arriba"
-      >↑</a
+      id="back-to-top"
     >
+      <i class="bi bi-arrow-up"></i>
+    </a>
 
-    <!-- Navbar -->
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
     <header class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
       <div class="container">
         <a
@@ -57,7 +144,8 @@
           href="index.html"
           aria-label="Inicio ConectaLab"
         >
-          <span class="fs-4">⚡</span><span>ConectaLab</span>
+          <span class="fs-4">⚡</span>
+          <span>ConectaLab</span>
         </a>
 
         <button
@@ -75,7 +163,7 @@
         <nav id="mainMenu" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Inicio</a>
+              <a class="nav-link active" href="index.html" aria-current="page">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/servicios.html">Servicios</a>
@@ -86,9 +174,62 @@
             <li class="nav-item">
               <a class="nav-link" href="pages/contacto.html">Contacto</a>
             </li>
+            
+            <!-- Selector de Temas -->
             <li class="nav-item dropdown ms-lg-3">
               <button
-                class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center"
+                id="theme-toggle"
+                class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+                type="button"
+                aria-label="Cambiar tema"
+                style="width: 38px; height: 38px"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                title="Temas"
+              >
+                <i class="bi bi-palette-fill fs-5" id="theme-icon"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" id="theme-menu">
+                <li><h6 class="dropdown-header">Temas</h6></li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="light" type="button">
+                    <i class="bi bi-sun me-2"></i>Claro
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="dark" type="button">
+                    <i class="bi bi-moon me-2"></i>Oscuro
+                  </button>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><h6 class="dropdown-header">Esquemas de Color</h6></li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="blue" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #2563eb; border-radius: 3px;"></span>Azul (Default)
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="green" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #10b981; border-radius: 3px;"></span>Verde
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="purple" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></span>Púrpura
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="orange" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #f59e0b; border-radius: 3px;"></span>Naranja
+                  </button>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Menú de Usuario -->
+            <li class="nav-item dropdown ms-lg-2">
+              <button
+                class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center position-relative"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -96,16 +237,31 @@
                 aria-label="Menú de usuario"
               >
                 <i class="bi bi-person-fill fs-5"></i>
+                <span id="favoritos-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">
+                  0
+                </span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
                 <li>
                   <a class="dropdown-item" href="pages/inicio-sesion.html">
-                    Iniciar sesión
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="pages/registro.html">
-                    Registrarse
+                    <i class="bi bi-person-plus me-2"></i>Registrarse
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="pages/perfil.html" id="perfil-link" style="display: none;">
+                    <i class="bi bi-person-circle me-2"></i>Mi Perfil
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="favoritos-link">
+                    <i class="bi bi-heart me-2"></i>Favoritos
+                    <span id="favoritos-count" class="badge bg-primary rounded-pill ms-2">0</span>
                   </a>
                 </li>
               </ul>
@@ -115,192 +271,494 @@
       </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero d-flex align-items-center text-white text-center">
+    <!-- ============================================
+         HERO / BANNER PRINCIPAL
+         ============================================ -->
+    <section class="hero d-flex align-items-center text-white text-center" aria-label="Banner principal">
       <div class="container">
-        <h1 class="display-5 fw-bold mb-3">
-          Conectamos profesionales con oportunidades.
-        </h1>
-        <p class="lead mb-4">
-          Encontrá expertos locales verificados en San Nicolás y alrededores
-        </p>
-        <a href="pages/servicios.html" class="btn btn-light btn-lg"
-          >Explorar servicios</a
-        >
-      </div>
-    </section>
-
-    <!-- Servicios destacados -->
-    <section class="py-5">
-      <div class="container">
-        <h2 class="section-title text-center">Servicios populares</h2>
-        <p class="text-center text-muted mb-4">Elegidos por la comunidad</p>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <article class="card card-raise h-100">
-              <img
-                src="img/srv-electricidad.jpeg"
-                class="card-img-top"
-                alt="Servicio de electricidad"
-              />
-              <div class="card-body text-center">
-                <h3 class="h5">Electricistas</h3>
-                <p class="text-muted mb-0">
-                  Instalaciones, mantenimiento y urgencias
-                </p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-md-4">
-            <article class="card card-raise h-100">
-              <img
-                src="img/srv-diseño.jpg"
-                class="card-img-top"
-                alt="Servicio de diseño gráfico"
-              />
-              <div class="card-body text-center">
-                <h3 class="h5">Diseño Gráfico</h3>
-                <p class="text-muted mb-0">Identidad visual y branding</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-md-4">
-            <article class="card card-raise h-100">
-              <img
-                src="img/srv-plomeria.jpg"
-                class="card-img-top"
-                alt="Servicio de plomería"
-              />
-              <div class="card-body text-center">
-                <h3 class="h5">Plomería</h3>
-                <p class="text-muted mb-0">Reparaciones e instalaciones</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cómo funciona -->
-    <section class="py-5 bg-light">
-      <div class="container text-center">
-        <h2 class="section-title">Cómo funciona</h2>
-        <div class="row g-4 mt-4">
-          <div class="col-md-4">
-            <div class="p-4 border rounded shadow-sm h-100">
-              <h3 class="h5 fw-semibold mb-2">1️⃣ Registrate</h3>
-              <p>Creá tu cuenta como profesional o cliente.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-4 border rounded shadow-sm h-100">
-              <h3 class="h5 fw-semibold mb-2">2️⃣ Elegí un servicio</h3>
-              <p>Buscá entre las categorías disponibles.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-4 border rounded shadow-sm h-100">
-              <h3 class="h5 fw-semibold mb-2">3️⃣ Contactá directo</h3>
-              <p>Coordiná tu trabajo de forma simple y segura.</p>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <h1 class="display-5 fw-bold mb-3" data-aos="fade-up">
+              Conectamos profesionales con oportunidades
+            </h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">
+              Encontrá expertos locales verificados en San Nicolás y alrededores
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap" data-aos="fade-up" data-aos-delay="200">
+              <a href="pages/servicios.html" class="btn btn-light btn-lg">
+                <i class="bi bi-search me-2"></i>Explorar servicios
+              </a>
+              <a href="pages/contacto.html" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-envelope me-2"></i>Contactanos
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonios -->
-    <section class="py-5 bg-light">
-      <div class="container">
-        <h2 class="text-center mb-4 section-title">Testimonios</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <blockquote class="p-4 bg-white shadow-sm rounded h-100">
-              <p>
-                “Gracias a ConectaLab encontré trabajo como electricista
-                independiente.”
-              </p>
-              <footer class="blockquote-footer mt-2">
-                Carlos, Electricista
-              </footer>
-            </blockquote>
+    <!-- ============================================
+         CONTENIDO PRINCIPAL
+         ============================================ -->
+    <main id="main-content" tabindex="-1">
+      <!-- Cómo Funciona -->
+      <section class="py-5 bg-light" aria-labelledby="como-funciona-title">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2 id="como-funciona-title" class="section-title mb-3">Cómo funciona</h2>
+              <p class="lead text-muted">Simple, rápido y seguro. En solo 3 pasos conectás con el profesional que necesitás</p>
+            </div>
           </div>
-          <div class="col-md-4">
-            <blockquote class="p-4 bg-white shadow-sm rounded h-100">
-              <p>
-                “Me encantó la facilidad para contactar profesionales en mi
-                zona.”
-              </p>
-              <footer class="blockquote-footer mt-2">María, Cliente</footer>
-            </blockquote>
-          </div>
-          <div class="col-md-4">
-            <blockquote class="p-4 bg-white shadow-sm rounded h-100">
-              <p>“Muy buena atención y diseño del sitio. 100% recomendable.”</p>
-              <footer class="blockquote-footer mt-2">Julián, Carpintero</footer>
-            </blockquote>
+          <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+              <div class="text-center p-4 bg-white rounded shadow-sm h-100">
+                <div class="mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    <span class="display-4">1️⃣</span>
+                  </div>
+                </div>
+                <h3 class="h5 fw-semibold mb-3">Registrate</h3>
+                <p class="text-muted mb-0">Creá tu cuenta como profesional o cliente en minutos</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center p-4 bg-white rounded shadow-sm h-100">
+                <div class="mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    <span class="display-4">2️⃣</span>
+                  </div>
+                </div>
+                <h3 class="h5 fw-semibold mb-3">Elegí un servicio</h3>
+                <p class="text-muted mb-0">Buscá entre más de 50 categorías disponibles</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center p-4 bg-white rounded shadow-sm h-100">
+                <div class="mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    <span class="display-4">3️⃣</span>
+                  </div>
+                </div>
+                <h3 class="h5 fw-semibold mb-3">Contactá directo</h3>
+                <p class="text-muted mb-0">Coordiná tu trabajo de forma simple y segura</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CTA -->
-    <section class="cta py-5 bg-gradient-primary text-white text-center">
-      <div class="container">
-        <h2 class="mb-3 fw-semibold">
-          ¿Listo para encontrar el profesional ideal?
-        </h2>
-        <p class="opacity-75 mb-4">Buscá por categoría, zona o especialidad</p>
-        <a href="pages/servicios.html" class="btn btn-white"
-          >Ver todos los servicios</a
-        >
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-4 bg-dark text-white text-center">
-      <div class="container small">
-        <div class="fw-semibold">
-          © 2025 ConectaLab | Todos los derechos reservados.
+      <!-- Servicios Destacados -->
+      <section class="py-5" aria-labelledby="servicios-title">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2 id="servicios-title" class="section-title mb-3">Servicios populares</h2>
+              <p class="lead text-muted">Categorías más elegidas por nuestra comunidad</p>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+              <article class="card card-raise h-100 shadow-sm">
+                <picture>
+                  <source srcset="img/srv-electricidad.webp" type="image/webp" />
+                  <img
+                    src="img/srv-electricidad.jpeg"
+                    class="card-img-top"
+                    alt="Servicio de electricidad profesional"
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="300"
+                  />
+                </picture>
+                <div class="card-body text-center">
+                  <h3 class="h5 fw-semibold mb-2">Electricistas</h3>
+                  <p class="text-muted mb-0">
+                    Instalaciones, mantenimiento y urgencias 24/7
+                  </p>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <article class="card card-raise h-100 shadow-sm">
+                <picture>
+                  <source srcset="img/srv-diseño.webp" type="image/webp" />
+                  <img
+                    src="img/srv-diseño.jpg"
+                    class="card-img-top"
+                    alt="Servicio de diseño gráfico profesional"
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="300"
+                  />
+                </picture>
+                <div class="card-body text-center">
+                  <h3 class="h5 fw-semibold mb-2">Diseño Gráfico</h3>
+                  <p class="text-muted mb-0">Identidad visual, branding y diseño web</p>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <article class="card card-raise h-100 shadow-sm">
+                <picture>
+                  <source srcset="img/srv-plomeria.webp" type="image/webp" />
+                  <img
+                    src="img/srv-plomeria.jpg"
+                    class="card-img-top"
+                    alt="Servicio de plomería profesional"
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="300"
+                  />
+                </picture>
+                <div class="card-body text-center">
+                  <h3 class="h5 fw-semibold mb-2">Plomería</h3>
+                  <p class="text-muted mb-0">Reparaciones e instalaciones completas</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="text-center mt-5">
+            <a href="pages/servicios.html" class="btn btn-primary btn-lg">
+              <i class="bi bi-grid me-2"></i>Ver todos los servicios
+            </a>
+          </div>
         </div>
+      </section>
 
-        <nav
-          class="footer-links d-flex justify-content-center align-items-center gap-3 mt-2 flex-wrap"
-          aria-label="Enlaces del sitio"
-        >
-          <a href="pages/contacto.html" class="link-light text-decoration-none"
-            >Contacto</a
-          >
-          <span class="text-white-50">•</span>
-          <a
-            href="pages/politica-privacidad.html"
-            class="link-light text-decoration-none"
-            >Política de Privacidad</a
-          >
-          <span class="text-white-50">•</span>
-          <a
-            href="pages/terminos-condiciones.html"
-            class="link-light text-decoration-none"
-            >Términos y Condiciones</a
-          >
-        </nav>
+      <!-- Estadísticas -->
+      <section class="py-5 bg-gradient-primary text-white" aria-labelledby="estadisticas-title">
+        <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <h2 id="estadisticas-title" class="h3 mb-0 opacity-90">Números que nos respaldan</h2>
+            </div>
+          </div>
+          <div class="row g-4 text-center">
+            <div class="col-md-3 col-6" data-aos="fade-up">
+              <div class="stat-card">
+                <h3 class="display-4 fw-bold mb-2 counter" data-target="500">0</h3>
+                <p class="mb-0 opacity-75">Profesionales</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="stat-card">
+                <h3 class="display-4 fw-bold mb-2 counter" data-target="1200">0</h3>
+                <p class="mb-0 opacity-75">Clientes satisfechos</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="stat-card">
+                <h3 class="display-4 fw-bold mb-2 counter" data-target="50">0</h3>
+                <p class="mb-0 opacity-75">Categorías</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="stat-card">
+                <h3 class="display-4 fw-bold mb-2 counter" data-target="98">0</h3>
+                <p class="mb-0 opacity-75">% Satisfacción</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div class="social-icons mt-3 d-flex justify-content-center gap-3">
-          <a href="#" class="text-light fs-5"
-            ><i class="bi bi-instagram"></i
-          ></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-whatsapp"></i></a>
+      <!-- Testimonios -->
+      <section class="py-5 bg-light" aria-labelledby="testimonios-title">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2 id="testimonios-title" class="section-title mb-3">Testimonios</h2>
+              <p class="lead text-muted">Lo que dicen nuestros usuarios</p>
+            </div>
+          </div>
+          <div id="testimoniosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <blockquote class="p-4 bg-white shadow-sm rounded h-100">
+                      <div class="stars mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="mb-3">
+                        "Gracias a ConectaLab encontré trabajo como electricista independiente. Excelente plataforma."
+                      </p>
+                      <footer class="blockquote-footer">
+                        <strong>Carlos M.</strong> - Electricista
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="col-md-4">
+                    <blockquote class="p-4 bg-white shadow-sm rounded h-100">
+                      <div class="stars mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="mb-3">
+                        "Me encantó la facilidad para contactar profesionales en mi zona. Muy recomendable."
+                      </p>
+                      <footer class="blockquote-footer">
+                        <strong>María G.</strong> - Cliente
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="col-md-4">
+                    <blockquote class="p-4 bg-white shadow-sm rounded h-100">
+                      <div class="stars mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="mb-3">"Muy buena atención y diseño del sitio. 100% recomendable."</p>
+                      <footer class="blockquote-footer">
+                        <strong>Julián R.</strong> - Carpintero
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <blockquote class="p-4 bg-white shadow-sm rounded h-100">
+                      <div class="stars mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="mb-3">
+                        "Increíble plataforma. Encontré varios clientes en mi primera semana."
+                      </p>
+                      <footer class="blockquote-footer">
+                        <strong>Ana L.</strong> - Diseñadora Gráfica
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="col-md-4">
+                    <blockquote class="p-4 bg-white shadow-sm rounded h-100">
+                      <div class="stars mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="mb-3">
+                        "Rápido, seguro y confiable. Los profesionales son excelentes."
+                      </p>
+                      <footer class="blockquote-footer">
+                        <strong>Roberto S.</strong> - Cliente
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="col-md-4">
+                    <blockquote class="p-4 bg-white shadow-sm rounded h-100">
+                      <div class="stars mb-3 text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="mb-3">"La mejor forma de encontrar profesionales locales. Excelente servicio."</p>
+                      <footer class="blockquote-footer">
+                        <strong>Laura P.</strong> - Arquitecta
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video -->
+      <section class="py-5" aria-labelledby="video-title">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2 id="video-title" class="section-title mb-3">Conocé más sobre nosotros</h2>
+              <p class="lead text-muted">Descubrí cómo funciona nuestra plataforma</p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+              <div class="card shadow-sm">
+                <div class="card-body p-0">
+                  <div class="ratio ratio-16x9" style="background: #000;">
+                    <iframe
+                      src="https://www.youtube.com/embed/oth3DJ8RJqU"
+                      title="Video sobre ConectaLab - Cómo funciona nuestra plataforma"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                  <div class="p-4">
+                    <h5 class="card-title mb-2 fw-bold">ConectaLab - Conectando profesionales con clientes</h5>
+                    <p class="card-text text-muted mb-0">Descubrí cómo funciona nuestra plataforma y cómo podemos ayudarte</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="py-5 bg-primary text-white" aria-labelledby="newsletter-title">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <h3 id="newsletter-title" class="fw-bold mb-2">
+                <i class="bi bi-envelope-heart me-2"></i>Suscribite a nuestro newsletter
+              </h3>
+              <p class="mb-0 opacity-75">Recibí consejos, ofertas y novedades sobre servicios profesionales</p>
+            </div>
+            <div class="col-lg-6">
+              <form id="newsletter-form" class="d-flex gap-2">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Tu email"
+                  required
+                  aria-label="Email para newsletter"
+                  id="newsletter-email"
+                />
+                <button type="submit" class="btn btn-light">
+                  <i class="bi bi-envelope me-2"></i>Suscribirse
+                </button>
+              </form>
+              <small class="d-block mt-2 opacity-75">
+                <i class="bi bi-shield-check me-1"></i>No compartimos tu información. Puedes cancelar en cualquier momento.
+              </small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Final -->
+      <section class="py-5 bg-gradient-primary text-white text-center" aria-labelledby="cta-title">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h2 id="cta-title" class="mb-3 fw-bold">¿Listo para encontrar el profesional ideal?</h2>
+              <p class="lead opacity-75 mb-4">Buscá por categoría, zona o especialidad</p>
+              <a href="pages/servicios.html" class="btn btn-light btn-lg">
+                <i class="bi bi-search me-2"></i>Explorar todos los servicios
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="py-5 bg-dark text-white">
+      <div class="container">
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">
+              <span class="fs-4">⚡</span> ConectaLab
+            </h5>
+            <p class="text-white-50 small">
+              Conectamos profesionales con clientes en San Nicolás de los Arroyos y alrededores.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Enlaces rápidos</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="pages/servicios.html" class="text-white-50 text-decoration-none small">Servicios</a>
+              </li>
+              <li class="mb-2">
+                <a href="pages/sobre.html" class="text-white-50 text-decoration-none small">Sobre Nosotros</a>
+              </li>
+              <li class="mb-2">
+                <a href="pages/contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+              </li>
+              <li class="mb-2">
+                <a href="pages/blog.html" class="text-white-50 text-decoration-none small">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Seguinos</h5>
+            <div class="d-flex gap-3 mb-3">
+              <a href="#" class="text-white-50 fs-5" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="#" class="text-white-50 fs-5" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="text-white-50 fs-5" aria-label="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-secondary" />
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center mb-3">
+              <small class="text-white-50">© 2025 ConectaLab | Todos los derechos reservados.</small>
+            </div>
+            <nav
+              class="footer-links d-flex justify-content-center align-items-center gap-3 flex-wrap"
+              aria-label="Enlaces legales"
+            >
+              <a href="pages/contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+              <span class="text-white-50">•</span>
+              <a href="pages/blog.html" class="text-white-50 text-decoration-none small">Blog</a>
+              <span class="text-white-50">•</span>
+              <a href="pages/galeria.html" class="text-white-50 text-decoration-none small">Galería</a>
+              <span class="text-white-50">•</span>
+              <a href="pages/guias.html" class="text-white-50 text-decoration-none small">Guías</a>
+              <span class="text-white-50">•</span>
+              <a href="pages/politica-privacidad.html" class="text-white-50 text-decoration-none small">Política de Privacidad</a>
+              <span class="text-white-50">•</span>
+              <a href="pages/terminos-condiciones.html" class="text-white-50 text-decoration-none small">Términos y Condiciones</a>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

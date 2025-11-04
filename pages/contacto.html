@@ -2,20 +2,76 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contacto — ConectaLab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Contacto — ConectaLab | San Nicolás de los Arroyos</title>
     <meta
       name="description"
-      content="ConectaLab — Plataforma para conectar profesionales y clientes en San Nicolás de los Arroyos."
+      content="Contactá con ConectaLab. Envíanos un mensaje, conocé nuestra ubicación y datos de contacto. Estamos en San Nicolás de los Arroyos, Buenos Aires."
     />
-
+    <meta name="keywords" content="contacto, ConectaLab, San Nicolás, profesionales, servicios, Buenos Aires" />
+    <meta name="author" content="ConectaLab" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://conectalab.com.ar/pages/contacto.html" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://conectalab.com.ar/pages/contacto.html" />
+    <meta property="og:title" content="Contacto — ConectaLab" />
+    <meta property="og:description" content="Contactá con ConectaLab. Envíanos un mensaje o conocé nuestra ubicación." />
+    
     <!-- Favicon -->
-    <meta
-      name="description"
-      content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos. Encontrá servicios locales de confianza."
-    />
     <link rel="icon" href="../img/favicon.png" type="image/png" />
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contacto - ConectaLab",
+      "description": "Página de contacto de ConectaLab",
+      "url": "https://conectalab.com.ar/pages/contacto.html",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "ConectaLab",
+        "url": "https://conectalab.com.ar",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+54-336-402-2033",
+          "contactType": "customer service",
+          "email": "contacto@conectalab.com.ar",
+          "areaServed": "AR",
+          "availableLanguage": "Spanish"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Nicolás de los Arroyos",
+          "addressRegion": "Buenos Aires",
+          "addressCountry": "AR"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
 
+    <!-- Preconnect para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -36,40 +92,47 @@
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
 
-    <!-- Back to top -->
-  <a
-    href="#top"
-    class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle"
-    style="
-      width: 45px;
-      height: 45px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
-    "
-    >↑</a
-  >
+  <body id="top">
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-  <body>
+    <!-- Botón volver arriba -->
+    <a
+      href="#top"
+      class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle back-to-top"
+      id="back-to-top"
+      aria-label="Volver arriba"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </a>
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
     <header class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
       <div class="container">
         <a
           class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2"
           href="../index.html"
+          aria-label="Inicio ConectaLab"
         >
-          <span class="fs-5">⚡</span><span>ConectaLab</span>
+          <span class="fs-4">⚡</span>
+          <span>ConectaLab</span>
         </a>
+
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#menu"
+          data-bs-target="#mainMenu"
+          aria-controls="mainMenu"
+          aria-expanded="false"
+          aria-label="Abrir menú"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <nav id="menu" class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto">
+
+        <nav id="mainMenu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link" href="../index.html">Inicio</a>
             </li>
@@ -80,160 +143,334 @@
               <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="contacto.html">Contacto</a>
+              <a class="nav-link active" href="contacto.html" aria-current="page">Contacto</a>
+            </li>
+            
+            <!-- Selector de Temas -->
+            <li class="nav-item dropdown ms-lg-3">
+              <button
+                id="theme-toggle"
+                class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+                type="button"
+                aria-label="Cambiar tema"
+                style="width: 38px; height: 38px"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                title="Temas"
+              >
+                <i class="bi bi-palette-fill fs-5" id="theme-icon"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" id="theme-menu">
+                <li><h6 class="dropdown-header">Temas</h6></li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="light" type="button">
+                    <i class="bi bi-sun me-2"></i>Claro
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="dark" type="button">
+                    <i class="bi bi-moon me-2"></i>Oscuro
+                  </button>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><h6 class="dropdown-header">Esquemas de Color</h6></li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="blue" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #2563eb; border-radius: 3px;"></span>Azul (Default)
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="green" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #10b981; border-radius: 3px;"></span>Verde
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="purple" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></span>Púrpura
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option" data-theme="orange" type="button">
+                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #f59e0b; border-radius: 3px;"></span>Naranja
+                  </button>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Menú de Usuario -->
+            <li class="nav-item dropdown ms-lg-2">
+              <button
+                class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center position-relative"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 38px; height: 38px"
+                aria-label="Menú de usuario"
+              >
+                <i class="bi bi-person-fill fs-5"></i>
+                <span id="favoritos-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">
+                  0
+                </span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
+                <li>
+                  <a class="dropdown-item" href="inicio-sesion.html">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="registro.html">
+                    <i class="bi bi-person-plus me-2"></i>Registrarse
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="perfil.html" id="perfil-link" style="display: none;">
+                    <i class="bi bi-person-circle me-2"></i>Mi Perfil
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="favoritos-link">
+                    <i class="bi bi-heart me-2"></i>Favoritos
+                    <span id="favoritos-count" class="badge bg-primary rounded-pill ms-2">0</span>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
       </div>
     </header>
 
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb-container">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contacto</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
     <!-- Header de página -->
-    <section class="page-header text-white text-center">
+    <section class="contacto page-header text-white text-center">
       <div class="container">
         <h1 class="fw-bold">Contacto</h1>
         <p class="opacity-75">Escribinos y te respondemos a la brevedad</p>
       </div>
     </section>
 
-    <!-- Formulario -->
-    <main class="py-5">
+    <!-- Formulario y Mapa -->
+    <main class="py-5" id="main-content" tabindex="-1">
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row g-4">
+          <!-- Formulario de Contacto -->
           <div class="col-lg-7">
-            <form class="card card-raise p-4 p-md-5">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Nombre y apellido"
-                    required
-                  />
+            <div class="card card-raise shadow-sm">
+              <div class="card-body p-4 p-md-5">
+                <h2 class="h4 mb-4 fw-bold">Envianos un mensaje</h2>
+                <form id="formulario-contacto">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                      <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        class="form-control"
+                        placeholder="Nombre y apellido"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="email-contacto" class="form-label fw-semibold">Email</label>
+                      <input
+                        type="email"
+                        id="email-contacto"
+                        name="email"
+                        class="form-control"
+                        placeholder="conectalab@mail.com"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label for="motivo" class="form-label fw-semibold">Motivo del contacto</label>
+                      <select id="motivo" name="motivo" class="form-select" required>
+                        <option value="" selected>Seleccioná una opción</option>
+                        <option value="consulta-general">Consulta general</option>
+                        <option value="servicio">Solicitar un servicio</option>
+                        <option value="publicar">Quiero publicar como profesional</option>
+                        <option value="soporte">Problema con la web</option>
+                        <option value="colaboracion">Propuesta o colaboración</option>
+                        <option value="otro">Otro motivo</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+                      <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        class="form-control"
+                        rows="5"
+                        placeholder="Contanos en qué podemos ayudarte"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100 btn-lg" type="submit">
+                        <i class="bi bi-send me-2"></i>Enviar mensaje
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                
+                <!-- Aviso legal -->
+                <p class="small text-muted text-center mt-3 mb-0">
+                  Al enviar este formulario aceptás nuestra
+                  <a href="politica-privacidad.html" class="text-primary text-decoration-none">política de privacidad</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Información de Contacto y Mapa -->
+          <div class="col-lg-5">
+            <div class="card card-raise shadow-sm mb-4">
+              <div class="card-body p-4">
+                <h3 class="h5 mb-4 fw-bold">Información de contacto</h3>
+                <div class="d-flex align-items-start gap-3 mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-2">
+                    <i class="bi bi-geo-alt-fill text-primary fs-5"></i>
+                  </div>
+                  <div>
+                    <strong>Ubicación</strong>
+                    <p class="mb-0 text-muted">San Nicolás de los Arroyos, Buenos Aires</p>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="conectalab@mail.com"
-                    required
-                  />
+                <div class="d-flex align-items-start gap-3 mb-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-2">
+                    <i class="bi bi-envelope-fill text-primary fs-5"></i>
+                  </div>
+                  <div>
+                    <strong>Email</strong>
+                    <p class="mb-0 text-muted">contacto@conectalab.com.ar</p>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <label class="form-label">Motivo del contacto</label>
-                  <select class="form-select" required>
-                    <option value="" selected>Seleccioná una opción</option>
-                    <option value="consulta-general">Consulta general</option>
-                    <option value="servicio">Solicitar un servicio</option>
-                    <option value="publicar">
-                      Quiero publicar como profesional
-                    </option>
-                    <option value="soporte">Problema con la web</option>
-                    <option value="colaboracion">
-                      Propuesta o colaboración
-                    </option>
-                    <option value="otro">Otro motivo</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Mensaje</label>
-                  <textarea
-                    class="form-control"
-                    rows="5"
-                    placeholder="Contanos en qué podemos ayudarte"
-                    required
-                  ></textarea>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary w-100" type="submit">
-                    Enviar mensaje
-                  </button>
+                <div class="d-flex align-items-start gap-3">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-2">
+                    <i class="bi bi-telephone-fill text-primary fs-5"></i>
+                  </div>
+                  <div>
+                    <strong>Teléfono</strong>
+                    <p class="mb-0 text-muted">+54 336 402-2033</p>
+                  </div>
                 </div>
               </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Aviso legal -->
-        <p class="small text-muted text-center mt-3">
-          Al enviar este formulario aceptás nuestra
-          <a href="#" class="text-primary text-decoration-none"
-            >política de privacidad</a
-          >.
-        </p>
-
-        <!-- Información -->
-        <div class="row mt-5 g-4 text-center">
-          <div class="col-md-4">
-            <div class="p-3 rounded bg-light h-100">
-              📍 San Nicolás de los Arroyos, Buenos Aires
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 rounded bg-light h-100">
-              ✉️ contacto@conectalab.com.ar
+
+            <!-- Mapa -->
+            <div class="card shadow-sm">
+              <div class="card-body p-0">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.6753090348035!2d-60.2280!3d-33.3325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b767da21a3cd05%3A0x7c9b4d4e1f2d2f91!2sSan%20Nicol%C3%A1s%20de%20los%20Arroyos%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1699999999999"
+                  width="100%"
+                  height="300"
+                  style="border: 0; border-radius: 10px"
+                  allowfullscreen=""
+                  loading="lazy"
+                  title="Mapa de San Nicolás de los Arroyos"
+                ></iframe>
+              </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 rounded bg-light h-100">📱 +54 336 402-2033</div>
-          </div>
-          <div class="mt-5 text-center">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.6753090348035!2d-60.2280!3d-33.3325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b767da21a3cd05%3A0x7c9b4d4e1f2d2f91!2sSan%20Nicol%C3%A1s%20de%20los%20Arroyos%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1699999999999"
-              width="100%"
-              height="300"
-              style="border: 0; border-radius: 10px"
-              allowfullscreen=""
-              loading="lazy"
-            >
-            </iframe>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="py-4 bg-dark text-white text-center">
-      <div class="container small">
-        <div class="fw-semibold">
-          © 2025 ConectaLab | Todos los derechos reservados.
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="py-5 bg-dark text-white">
+      <div class="container">
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">
+              <span class="fs-4">⚡</span> ConectaLab
+            </h5>
+            <p class="text-white-50 small">
+              Conectamos profesionales con clientes en San Nicolás de los Arroyos y alrededores.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Enlaces rápidos</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="servicios.html" class="text-white-50 text-decoration-none small">Servicios</a>
+              </li>
+              <li class="mb-2">
+                <a href="sobre.html" class="text-white-50 text-decoration-none small">Sobre Nosotros</a>
+              </li>
+              <li class="mb-2">
+                <a href="contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+              </li>
+              <li class="mb-2">
+                <a href="blog.html" class="text-white-50 text-decoration-none small">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Seguinos</h5>
+            <div class="d-flex gap-3 mb-3">
+              <a href="#" class="text-white-50 fs-5" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="#" class="text-white-50 fs-5" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="text-white-50 fs-5" aria-label="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+            </div>
+          </div>
         </div>
-
-        <nav
-          class="footer-links d-flex justify-content-center align-items-center gap-3 mt-2 flex-wrap"
-          aria-label="Enlaces del sitio"
-        >
-          <a href="contacto.html" class="link-light text-decoration-none"
-            >Contacto</a
-          >
-          <span class="text-white-50">•</span>
-          <a
-            href="politica-privacidad.html"
-            class="link-light text-decoration-none"
-            >Política de Privacidad</a
-          >
-          <span class="text-white-50">•</span>
-          <a
-            href="terminos-condiciones.html"
-            class="link-light text-decoration-none"
-            >Términos y Condiciones</a
-          >
-        </nav>
-        <div class="social-icons mt-3 d-flex justify-content-center gap-3">
-          <a href="#" class="text-light fs-5"
-            ><i class="bi bi-instagram"></i
-          ></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-whatsapp"></i></a>
+        <hr class="border-secondary" />
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center mb-3">
+              <small class="text-white-50">© 2025 ConectaLab | Todos los derechos reservados.</small>
+            </div>
+            <nav
+              class="footer-links d-flex justify-content-center align-items-center gap-3 flex-wrap"
+              aria-label="Enlaces legales"
+            >
+              <a href="contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+              <span class="text-white-50">•</span>
+              <a href="blog.html" class="text-white-50 text-decoration-none small">Blog</a>
+              <span class="text-white-50">•</span>
+              <a href="galeria.html" class="text-white-50 text-decoration-none small">Galería</a>
+              <span class="text-white-50">•</span>
+              <a href="guias.html" class="text-white-50 text-decoration-none small">Guías</a>
+              <span class="text-white-50">•</span>
+              <a href="politica-privacidad.html" class="text-white-50 text-decoration-none small">Política de Privacidad</a>
+              <span class="text-white-50">•</span>
+              <a href="terminos-condiciones.html" class="text-white-50 text-decoration-none small">Términos y Condiciones</a>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>

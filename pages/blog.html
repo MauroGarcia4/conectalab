@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | ConectaLab</title>
+  <meta name="description" content="Artículos y consejos sobre servicios profesionales en San Nicolás">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body id="top">
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Botón volver arriba -->
+  <a
+    href="#top"
+    class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow rounded-circle"
+    style="width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;"
+    aria-label="Volver arriba">↑</a>
+
+  <!-- Navbar -->
+  <header class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="../index.html" aria-label="Inicio ConectaLab">
+        <span class="fs-4">⚡</span><span>ConectaLab</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <nav id="menu" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item dropdown ms-lg-3">
+            <button id="theme-toggle" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" type="button" aria-label="Cambiar tema" style="width: 38px; height: 38px" data-bs-toggle="dropdown">
+              <i class="bi bi-palette-fill fs-5" id="theme-icon"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" id="theme-menu">
+              <li><h6 class="dropdown-header">Temas</h6></li>
+              <li><button class="dropdown-item theme-option" data-theme="light" type="button"><i class="bi bi-sun me-2"></i>Claro</button></li>
+              <li><button class="dropdown-item theme-option" data-theme="dark" type="button"><i class="bi bi-moon me-2"></i>Oscuro</button></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><h6 class="dropdown-header">Esquemas</h6></li>
+              <li><button class="dropdown-item theme-option" data-theme="blue" type="button"><span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #2563eb; border-radius: 3px;"></span>Azul</button></li>
+              <li><button class="dropdown-item theme-option" data-theme="green" type="button"><span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #10b981; border-radius: 3px;"></span>Verde</button></li>
+              <li><button class="dropdown-item theme-option" data-theme="purple" type="button"><span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></span>Púrpura</button></li>
+              <li><button class="dropdown-item theme-option" data-theme="orange" type="button"><span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #f59e0b; border-radius: 3px;"></span>Naranja</button></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-container">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Blog</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <section class="page-header text-white text-center" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);">
+    <div class="container">
+      <h1 class="fw-bold">Blog</h1>
+      <p class="opacity-75">Consejos, tips y novedades sobre servicios profesionales</p>
+    </div>
+  </section>
+
+  <!-- Contenido Principal -->
+  <main id="main-content" class="py-5" tabindex="-1">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Artículo 1 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <article class="card h-100 card-raise">
+            <img src="../img/srv-electricidad.jpeg" class="card-img-top" alt="Cómo elegir un electricista" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <small class="text-muted"><i class="bi bi-calendar me-1"></i>15 Ene 2025</small>
+                <small class="text-muted"><i class="bi bi-person me-1"></i>Admin</small>
+              </div>
+              <h3 class="h5 mb-3">Cómo elegir un electricista confiable</h3>
+              <p class="text-muted">Consejos prácticos para encontrar el profesional adecuado para tus trabajos eléctricos...</p>
+              <a href="#" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Artículo 2 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <article class="card h-100 card-raise">
+            <img src="../img/srv-plomeria.jpg" class="card-img-top" alt="Mantenimiento del hogar" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <small class="text-muted"><i class="bi bi-calendar me-1"></i>12 Ene 2025</small>
+                <small class="text-muted"><i class="bi bi-person me-1"></i>Admin</small>
+              </div>
+              <h3 class="h5 mb-3">Mantenimiento preventivo del hogar</h3>
+              <p class="text-muted">Guía completa para mantener tu hogar en perfecto estado y evitar problemas mayores...</p>
+              <a href="#" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Artículo 3 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <article class="card h-100 card-raise">
+            <img src="../img/srv-diseno.jpg" class="card-img-top" alt="Diseño gráfico" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <small class="text-muted"><i class="bi bi-calendar me-1"></i>10 Ene 2025</small>
+                <small class="text-muted"><i class="bi bi-person me-1"></i>Admin</small>
+              </div>
+              <h3 class="h5 mb-3">Importancia del branding para tu negocio</h3>
+              <p class="text-muted">Descubrí por qué una identidad visual profesional puede hacer la diferencia...</p>
+              <a href="#" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Artículo 4 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <article class="card h-100 card-raise">
+            <img src="../img/srv-carpinteria.jpg" class="card-img-top" alt="Carpintería" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <small class="text-muted"><i class="bi bi-calendar me-1"></i>8 Ene 2025</small>
+                <small class="text-muted"><i class="bi bi-person me-1"></i>Admin</small>
+              </div>
+              <h3 class="h5 mb-3">Muebles a medida: ventajas y consideraciones</h3>
+              <p class="text-muted">Todo lo que necesitás saber antes de encargar muebles personalizados...</p>
+              <a href="#" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Artículo 5 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <article class="card h-100 card-raise">
+            <img src="../img/srv-electricidad.jpeg" class="card-img-top" alt="Ahorro energético" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <small class="text-muted"><i class="bi bi-calendar me-1"></i>5 Ene 2025</small>
+                <small class="text-muted"><i class="bi bi-person me-1"></i>Admin</small>
+              </div>
+              <h3 class="h5 mb-3">Tips para ahorrar energía en casa</h3>
+              <p class="text-muted">Consejos prácticos para reducir tu factura de luz sin sacrificar comodidad...</p>
+              <a href="#" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Artículo 6 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <article class="card h-100 card-raise">
+            <img src="../img/srv-plomeria.jpg" class="card-img-top" alt="Plomería" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <small class="text-muted"><i class="bi bi-calendar me-1"></i>3 Ene 2025</small>
+                <small class="text-muted"><i class="bi bi-person me-1"></i>Admin</small>
+              </div>
+              <h3 class="h5 mb-3">Señales de que necesitás un plomero urgente</h3>
+              <p class="text-muted">Aprendé a identificar problemas de plomería que requieren atención inmediata...</p>
+              <a href="#" class="btn btn-sm btn-primary">Leer más</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Paginación -->
+      <nav aria-label="Paginación del blog" class="mt-5">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark text-white text-center">
+    <div class="container small">
+      <div class="fw-semibold">© 2025 ConectaLab | Todos los derechos reservados.</div>
+      <nav class="footer-links d-flex justify-content-center align-items-center gap-3 mt-2 flex-wrap">
+        <a href="contacto.html" class="link-light text-decoration-none">Contacto</a>
+        <span class="text-white-50">•</span>
+        <a href="politica-privacidad.html" class="link-light text-decoration-none">Política de Privacidad</a>
+        <span class="text-white-50">•</span>
+        <a href="terminos-condiciones.html" class="link-light text-decoration-none">Términos y Condiciones</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
