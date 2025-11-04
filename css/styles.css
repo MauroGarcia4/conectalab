@@ -1,5 +1,6 @@
 /* ==============================
    VARIABLES Y BASE
+   Optimizado para PageSpeed Insights
 ============================== */
 :root {
   --primary: #2563eb;
@@ -25,12 +26,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Critical CSS - Estilos iniciales para evitar FOUC */
 body {
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuando las fuentes carguen, aplicar Poppins */
+.fonts-loaded body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 /* ==============================
@@ -47,14 +56,19 @@ img {
   display: block;
 }
 
-/* Imágenes con lazy loading */
+/* Imágenes con lazy loading - Mejorado para evitar que se oculten */
 img[loading="lazy"] {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease;
 }
 
 img[loading="lazy"].loaded {
   opacity: 1;
+}
+
+/* Si la imagen tiene src, mostrarla inmediatamente */
+img[src]:not([src=""]) {
+  opacity: 1 !important;
 }
 
 /* Skeleton para imágenes mientras cargan */
@@ -75,10 +89,36 @@ picture img {
   height: auto;
 }
 
-/* Mejorar rendimiento de scroll */
+/* Mejorar rendimiento de scroll y touch */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optimizar interacciones touch */
+a,
+button {
+  touch-action: manipulation;
+}
+
+/* Evitar selección accidental en móvil */
+@media (max-width: 768px) {
+
+  button,
+  a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Permitir selección de texto en párrafos */
+  p,
+  span,
+  div {
+    user-select: text;
+    -webkit-user-select: text;
+  }
 }
 
 /* Optimizar animaciones */
@@ -90,6 +130,168 @@ picture img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==============================
+   OPTIMIZACIONES PARA MÓVIL
+   Específicas para PageSpeed Mobile
+============================== */
+
+/* Reducir tamaños de fuente en móvil para mejor performance */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .display-5 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  /* Optimizar cards en móvil */
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  /* Botones más grandes para touch (mínimo 44x44px según Apple HIG) */
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    touch-action: manipulation;
+  }
+
+  /* Reducir padding en móvil */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Optimizar hero en móvil */
+  .hero {
+    min-height: 50vh;
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  /* Optimizar navbar en móvil */
+  .navbar {
+    padding: 0.75rem 0;
+  }
+
+  /* Optimizar imágenes en móvil */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Optimizar footer en móvil */
+  footer {
+    padding: 2rem 0;
+  }
+
+  footer .row {
+    text-align: center;
+  }
+
+  /* Reducir animaciones en móvil para mejor performance */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Optimizar page-header en móvil */
+  .page-header {
+    padding: 3rem 0;
+  }
+
+  /* Optimizar breadcrumbs en móvil */
+  .breadcrumb-container {
+    padding: 0.75rem 0;
+  }
+
+  /* Optimizar modales en móvil */
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  /* Optimizar toasts en móvil */
+  .toast-custom {
+    max-width: calc(100% - 2rem);
+    margin: 0.5rem 1rem;
+  }
+
+  /* Optimizar back-to-top en móvil */
+  .back-to-top {
+    width: 50px;
+    height: 50px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Optimizaciones para pantallas muy pequeñas */
+@media (max-width: 576px) {
+  html {
+    font-size: 13px;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .display-5 {
+    font-size: 1.75rem;
+  }
+
+  /* Stack buttons en móvil */
+  .d-flex.gap-3 {
+    flex-direction: column;
+    gap: 0.75rem !important;
+  }
+
+  .btn-lg {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Optimizar cards en móvil pequeño */
+  .card-img-top {
+    height: 150px;
+  }
+
+  /* Reducir padding general */
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Optimizar hero en móvil pequeño */
+  .hero {
+    min-height: 40vh;
+    padding: 1.5rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero .lead {
+    font-size: 0.9rem;
   }
 }
 
@@ -140,7 +342,7 @@ picture img {
 .hero {
   min-height: 65vh;
   background: linear-gradient(rgba(30, 64, 175, 0.55), rgba(2, 6, 23, 0.35)),
-    url("../img/ciudad.jpg") center/cover no-repeat;
+    url("../img/ciudad.webp") center/cover no-repeat;
 }
 
 .page-header {
@@ -248,22 +450,22 @@ picture img {
 ============================== */
 .cta {
   background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(255, 255, 255, 0.342)),
-    url("../img/ciudad.jpg") center/cover no-repeat;
+    url("../img/ciudad.webp") center/cover no-repeat;
 }
 
 .servicios {
   background: linear-gradient(rgba(30, 64, 175, 0.55), rgba(2, 6, 23, 0.35)),
-    url("../img/profesionales.jpg") center/cover no-repeat;
+    url("../img/profesionales.webp") center/cover no-repeat;
 }
 
 .sobre {
   background: linear-gradient(rgba(30, 64, 175, 0.55), rgba(2, 6, 23, 0.35)),
-    url("../img/sobre_nosotros.jpg") center/cover no-repeat;
+    url("../img/sobre_nosotros.webp") center/cover no-repeat;
 }
 
 .contacto {
   background: linear-gradient(rgba(30, 64, 175, 0.55), rgba(2, 6, 23, 0.35)),
-    url("../img/contacto.jpg") center/cover no-repeat;
+    url("../img/contacto.webp") center/cover no-repeat;
 }
 
 /* Headers legales */
@@ -283,12 +485,12 @@ picture img {
 
 .privacidad-header {
   background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)),
-    url("../img/privacidad-bg.jpg") center/cover no-repeat;
+    url("../img/privacidad-bg.webp") center/cover no-repeat;
 }
 
 .terminos-header {
   background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)),
-    url("../img/terminos-bg.jpg") center/cover no-repeat;
+    url("../img/terminos-bg.webp") center/cover no-repeat;
 }
 
 .privacidad-header h1,
@@ -591,7 +793,7 @@ body.auth-body::after {
   text-decoration: underline !important;
 }
 
-/* Responsive */
+/* Responsive - Auth pages */
 @media (max-width: 768px) {
   .auth-card {
     padding: 2rem 1.5rem;
@@ -605,6 +807,17 @@ body.auth-body::after {
 
   .auth-icon i {
     font-size: 2rem;
+  }
+
+  /* Optimizar formularios en móvil */
+  .auth-form .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .auth-form .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    min-height: 44px;
   }
 }
 
@@ -956,7 +1169,7 @@ body.auth-body::after {
 /* Mantener las imágenes de fondo en modo oscuro pero con overlay más oscuro */
 [data-theme="dark"] .servicios.page-header {
   background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.65)),
-    url("../img/profesionales.jpg") center/cover no-repeat !important;
+    url("../img/profesionales.webp") center/cover no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
   background-attachment: scroll !important;
@@ -964,7 +1177,7 @@ body.auth-body::after {
 
 [data-theme="dark"] .sobre.page-header {
   background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.65)),
-    url("../img/sobre_nosotros.jpg") center/cover no-repeat !important;
+    url("../img/sobre_nosotros.webp") center/cover no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
   background-attachment: scroll !important;
@@ -972,7 +1185,7 @@ body.auth-body::after {
 
 [data-theme="dark"] .contacto.page-header {
   background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.65)),
-    url("../img/contacto.jpg") center/cover no-repeat !important;
+    url("../img/contacto.webp") center/cover no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
   background-attachment: scroll !important;
@@ -980,7 +1193,7 @@ body.auth-body::after {
 
 [data-theme="dark"] .hero {
   background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.65)),
-    url("../img/ciudad.jpg") center/cover no-repeat !important;
+    url("../img/ciudad.webp") center/cover no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
   background-attachment: scroll !important;

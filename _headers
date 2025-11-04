@@ -1,0 +1,47 @@
+# Netlify Headers para optimización de performance
+# Este archivo debe estar en la raíz del proyecto
+
+/*
+  # Cache estático (imágenes, CSS, JS)
+  Cache-Control: public, max-age=31536000, immutable
+  
+  # Compresión
+  Content-Encoding: gzip, br
+  
+  # Security headers
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Performance headers para móvil
+  Vary: Accept-Encoding
+  X-Content-Type-Options: nosniff
+
+/*.html
+  # HTML - Cache corto para permitir actualizaciones
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.css
+  # CSS - Cache largo con validación
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  # JavaScript - Cache largo con validación
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+/*.jpeg
+/*.png
+/*.gif
+/*.webp
+/*.svg
+  # Imágenes - Cache muy largo
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+/*.woff2
+/*.ttf
+  # Fuentes - Cache muy largo
+  Cache-Control: public, max-age=31536000, immutable
+

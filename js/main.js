@@ -22,6 +22,20 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// ============================================
+// DETECCIÓN DE CARGA DE FUENTES
+// ============================================
+if ('fonts' in document) {
+    document.fonts.ready.then(function () {
+        document.documentElement.classList.add('fonts-loaded');
+    });
+} else {
+    // Fallback para navegadores antiguos
+    window.addEventListener('load', function () {
+        document.documentElement.classList.add('fonts-loaded');
+    });
+}
+
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -1375,10 +1389,20 @@ function initLazyLoading() {
     });
 
     // Observar todas las imágenes con lazy loading
-    document.querySelectorAll('img[loading="lazy"], img[data-src], picture img').forEach(img => {
-        // Solo observar si no tiene src o tiene data-src
-        if (!img.src || img.dataset.src) {
+    // IMPORTANTE: Solo observar imágenes que realmente necesitan lazy loading (con data-src)
+    // NO observar imágenes que ya tienen src definido
+    document.querySelectorAll('img[data-src], picture img[data-src]').forEach(img => {
+        // Solo observar si tiene data-src y no tiene src ya cargado
+        if (img.dataset.src && !img.src) {
             imageObserver.observe(img);
+        }
+    });
+
+    // Para imágenes con loading="lazy" que ya tienen src, asegurar que se muestren
+    document.querySelectorAll('img[loading="lazy"][src]').forEach(img => {
+        if (img.src && !img.dataset.src) {
+            img.style.opacity = '1';
+            img.classList.add('loaded');
         }
     });
 

@@ -51,3 +51,15 @@ Una vez que tengas el CDN configurado, actualizá estas URLs en el código:
 - **GTmetrix**: https://gtmetrix.com/
 - **WebPageTest**: https://www.webpagetest.org/
 
+## 📄 Archivos de Configuración Creados:
+
+- **`_headers`**: Configuración de headers para Netlify (cache, compresión, security)
+- **`OPTIMIZACIONES_PAGESPEED.md`**: Guía completa de optimizaciones de PageSpeed
+
+## 🚀 Optimizaciones Adicionales Implementadas:
+
+1. **Scripts con `defer`**: Bootstrap y main.js no bloquean el render
+2. **Analytics diferido**: Carga después del evento `load`
+3. **Fuentes asíncronas**: Carga no bloqueante con fallback
+4. **Headers de cache**: Configurados para Netlify
+

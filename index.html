@@ -2,7 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Viewport optimizado para móvil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
     
     <!-- SEO Meta Tags -->
     <title>ConectaLab — Profesionales locales en San Nicolás</title>
@@ -20,7 +23,7 @@
     <meta property="og:url" content="https://conectalab.com.ar/" />
     <meta property="og:title" content="ConectaLab — Profesionales locales" />
     <meta property="og:description" content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos. Encontrá servicios locales de confianza." />
-    <meta property="og:image" content="https://conectalab.com.ar/img/favicon.png" />
+    <meta property="og:image" content="https://conectalab.com.ar/img/favicon.webp" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -29,7 +32,7 @@
     <meta property="twitter:description" content="ConectaLab conecta profesionales y clientes en San Nicolás de los Arroyos." />
     
     <!-- Favicon -->
-    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="icon" href="img/favicon.webp" type="image/webp" />
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json" />
@@ -46,8 +49,8 @@
       "name": "ConectaLab",
       "description": "Plataforma para conectar profesionales y clientes en San Nicolás de los Arroyos",
       "url": "https://conectalab.com.ar",
-      "logo": "https://conectalab.com.ar/img/favicon.png",
-      "image": "https://conectalab.com.ar/img/ciudad.jpg",
+      "logo": "https://conectalab.com.ar/img/favicon.webp",
+      "image": "https://conectalab.com.ar/img/ciudad.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "San Nicolás de los Arroyos",
@@ -78,8 +81,7 @@
     }
     </script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics - Carga diferida para no bloquear render -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -87,6 +89,14 @@
       gtag('config', 'G-XXXXXXXXXX', {
         'anonymize_ip': true,
         'cookie_flags': 'SameSite=None;Secure'
+      });
+      
+      // Cargar Analytics después de que la página cargue
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(script);
       });
     </script>
     
@@ -96,11 +106,19 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <!-- Fuentes -->
+    <!-- Fuentes con font-display para mejor performance -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     
     <!-- Bootstrap Icons -->
     <link
@@ -360,18 +378,15 @@
           <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up">
               <article class="card card-raise h-100 shadow-sm">
-                <picture>
-                  <source srcset="img/srv-electricidad.webp" type="image/webp" />
-                  <img
-                    src="img/srv-electricidad.jpeg"
-                    class="card-img-top"
-                    alt="Servicio de electricidad profesional"
-                    loading="lazy"
-                    decoding="async"
-                    width="400"
-                    height="300"
-                  />
-                </picture>
+                <img
+                  src="img/srv-electricidad.jpeg"
+                  class="card-img-top"
+                  alt="Servicio de electricidad profesional"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="300"
+                />
                 <div class="card-body text-center">
                   <h3 class="h5 fw-semibold mb-2">Electricistas</h3>
                   <p class="text-muted mb-0">
@@ -382,18 +397,15 @@
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
               <article class="card card-raise h-100 shadow-sm">
-                <picture>
-                  <source srcset="img/srv-diseño.webp" type="image/webp" />
-                  <img
-                    src="img/srv-diseño.jpg"
-                    class="card-img-top"
-                    alt="Servicio de diseño gráfico profesional"
-                    loading="lazy"
-                    decoding="async"
-                    width="400"
-                    height="300"
-                  />
-                </picture>
+                <img
+                  src="img/srv-diseño.webp"
+                  class="card-img-top"
+                  alt="Servicio de diseño gráfico profesional"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="300"
+                />
                 <div class="card-body text-center">
                   <h3 class="h5 fw-semibold mb-2">Diseño Gráfico</h3>
                   <p class="text-muted mb-0">Identidad visual, branding y diseño web</p>
@@ -402,18 +414,15 @@
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
               <article class="card card-raise h-100 shadow-sm">
-                <picture>
-                  <source srcset="img/srv-plomeria.webp" type="image/webp" />
-                  <img
-                    src="img/srv-plomeria.jpg"
-                    class="card-img-top"
-                    alt="Servicio de plomería profesional"
-                    loading="lazy"
-                    decoding="async"
-                    width="400"
-                    height="300"
-                  />
-                </picture>
+                <img
+                  src="img/srv-plomeria.webp"
+                  class="card-img-top"
+                  alt="Servicio de plomería profesional"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="300"
+                />
                 <div class="card-body text-center">
                   <h3 class="h5 fw-semibold mb-2">Plomería</h3>
                   <p class="text-muted mb-0">Reparaciones e instalaciones completas</p>
@@ -752,13 +761,16 @@
     </footer>
 
     <!-- ============================================
-         SCRIPTS
+         SCRIPTS - Optimizados para performance
          ============================================ -->
+    <!-- Bootstrap JS - Defer para no bloquear render -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
+      defer
     ></script>
-    <script src="js/main.js"></script>
+    <!-- JavaScript propio - Defer para mejor performance -->
+    <script src="js/main.js" defer></script>
   </body>
 </html>

@@ -2,7 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Viewport optimizado para móvil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
     
     <!-- SEO Meta Tags -->
     <title>Contacto — ConectaLab | San Nicolás de los Arroyos</title>
@@ -22,7 +25,7 @@
     <meta property="og:description" content="Contactá con ConectaLab. Envíanos un mensaje o conocé nuestra ubicación." />
     
     <!-- Favicon -->
-    <link rel="icon" href="../img/favicon.png" type="image/png" />
+    <link rel="icon" href="../img/favicon.webp" type="image/webp" />
     
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
@@ -54,8 +57,7 @@
     }
     </script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics - Carga diferida para no bloquear render -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -63,6 +65,14 @@
       gtag('config', 'G-XXXXXXXXXX', {
         'anonymize_ip': true,
         'cookie_flags': 'SameSite=None;Secure'
+      });
+      
+      // Cargar Analytics después de que la página cargue
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(script);
       });
     </script>
 
@@ -466,11 +476,14 @@
          SCRIPTS
          ============================================ -->
 
+    <!-- Bootstrap JS - Defer para no bloquear render -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
+      defer
     ></script>
-    <script src="../js/main.js"></script>
+    <!-- JavaScript propio - Defer para mejor performance -->
+    <script src="../js/main.js" defer></script>
   </body>
 </html>

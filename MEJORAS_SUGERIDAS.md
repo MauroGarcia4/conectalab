@@ -66,8 +66,10 @@
 
 ### Optimizaciones (Continuación):
 38. ✅ **Service Worker** - PWA completa con cache offline, estrategias Cache First y Network First, actualización automática, registro en `sw.js`
-39. ✅ **Google Analytics** - Integrado en todas las páginas principales (index, servicios, contacto, sobre) con configuración de privacidad (anonymize_ip), documentación en `CONFIGURACION_ANALYTICS.md`
+39. ✅ **Google Analytics** - Integrado en todas las páginas principales (index, servicios, contacto, sobre) con configuración de privacidad (anonymize_ip), carga diferida después del evento `load` para no bloquear render, documentación en `CONFIGURACION_ANALYTICS.md`
 40. ✅ **Structured Data (Schema.org)** - JSON-LD implementado: LocalBusiness (index), ItemList (servicios), ContactPage (contacto), AboutPage (sobre)
 41. ✅ **Optimización de Imágenes** - Soporte WebP con fallback usando `<picture>`, lazy loading avanzado con IntersectionObserver mejorado, skeleton screens CSS, detección automática de soporte WebP, atributos `decoding="async"` y dimensiones explícitas
 42. ✅ **CDN y Performance** - Preconnect y DNS prefetch para recursos externos (Google Fonts, CDN, Analytics), documentación completa en `OPTIMIZACIONES_CDN.md` con guía de implementación
+43. ✅ **Optimizaciones PageSpeed** - Scripts con `defer`, fuentes asíncronas (media="print" onload), critical CSS para evitar FOUC, detección de carga de fuentes, headers de cache para Netlify (`_headers`), documentación completa en `OPTIMIZACIONES_PAGESPEED.md`
+44. ✅ **Optimizaciones Móvil PageSpeed** - Viewport optimizado, imágenes responsive con `srcset` y `sizes`, optimizaciones CSS específicas para móvil (media queries 768px y 576px), botones optimizados para touch (min 44x44px), touch actions y tap highlights mejorados, reducción de animaciones en móvil, tamaños de fuente optimizados para móvil
 
