@@ -2,6 +2,15 @@
 // CONECTALAB - Funcionalidades JavaScript
 // ============================================
 
+// Error Tracking - Capturar errores desde el inicio
+if (typeof errorTracker !== 'undefined') {
+    // El error tracker ya está cargado desde el HTML
+    console.log('[ConectaLab] Error tracker inicializado');
+} else {
+    // Fallback si no se cargó el error tracker
+    console.warn('[ConectaLab] Error tracker no disponible');
+}
+
 // ============================================
 // REGISTRO DE SERVICE WORKER
 // ============================================
@@ -45,16 +54,33 @@ if ('fonts' in document) {
 document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================
+    // CODE SPLITTING - Cargar módulos solo cuando se necesiten
+    // ============================================
+    
+    // Cargar módulo de servicios solo si existe el contenedor
+    // Nota: Para usar import dinámico, los scripts deben ser type="module"
+    // Por ahora, cargamos condicionalmente las funciones
+    if (document.querySelector('#servicios-container')) {
+        // Cargar funciones de servicios solo si existen
+        if (typeof initServiciosFiltros === 'function') {
+            initServiciosFiltros();
+        } else {
+            // Cargar script de servicios dinámicamente si no está disponible
+            const serviciosScript = document.createElement('script');
+            serviciosScript.src = 'js/servicios-data.js';
+            serviciosScript.onload = () => {
+                if (typeof initServiciosFiltros === 'function') {
+                    initServiciosFiltros();
+                }
+            };
+            document.head.appendChild(serviciosScript);
+        }
+    }
+
+    // ============================================
     // 1. BOTÓN VOLVER ARRIBA
     // ============================================
     initBackToTop();
-
-    // ============================================
-    // 2. FILTROS Y BÚSQUEDA DE SERVICIOS
-    // ============================================
-    if (document.querySelector('#servicios-container')) {
-        initServiciosFiltros();
-    }
 
     // ============================================
     // 3. VALIDACIÓN FORMULARIO DE CONTACTO
@@ -154,7 +180,123 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // ============================================
+    // 19. BOTTOM NAVIGATION - Actualizar estado activo
+    // ============================================
+    initBottomNavigation();
 });
+
+// ============================================
+// FUNCIÓN: Bottom Navigation
+// ============================================
+function initBottomNavigation() {
+    // Solo en móvil
+    if (window.innerWidth > 991) {
+        // En desktop, asegurar que el bottom-nav esté oculto
+        const bottomNav = document.querySelector('.bottom-nav');
+        if (bottomNav) {
+            bottomNav.style.display = 'none';
+        }
+        return;
+    }
+
+    // Eliminar cualquier botón de chat que pueda estar interfiriendo en móvil
+    const chatButtons = document.querySelectorAll('button[data-bs-target="#chatModal"]:not(.bottom-nav-item), button[aria-label="Abrir chat"]:not(.bottom-nav-item)');
+    chatButtons.forEach(btn => {
+        if (!btn.closest('.bottom-nav')) {
+            btn.remove();
+        }
+    });
+
+    // Asegurar que el bottom-nav siempre sea visible
+    const bottomNav = document.querySelector('.bottom-nav');
+    if (bottomNav) {
+        bottomNav.style.display = 'flex';
+        bottomNav.style.visibility = 'visible';
+        bottomNav.style.opacity = '1';
+        bottomNav.style.position = 'fixed';
+        bottomNav.style.bottom = '0';
+        bottomNav.style.left = '0';
+        bottomNav.style.right = '0';
+        bottomNav.style.zIndex = '1050';
+        bottomNav.classList.remove('d-none');
+    }
+
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+
+    bottomNavItems.forEach(item => {
+        const href = item.getAttribute('href');
+        let isActive = false;
+
+        // Verificar si es la página actual
+        if (href) {
+            const hrefPage = href.split('/').pop();
+            if (currentPage === hrefPage || 
+                (currentPage === 'index.html' && (hrefPage === 'index.html' || href.includes('index.html'))) ||
+                (currentPage === 'guias.html' && hrefPage === 'guias.html') ||
+                (currentPage === 'perfil.html' && item.id === 'bottom-nav-user')) {
+                isActive = true;
+            }
+        } else if (item.id === 'bottom-nav-user' && currentPage === 'perfil.html') {
+            isActive = true;
+        }
+
+        if (isActive) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    // Manejar click en botón de usuario
+    const userBtn = document.querySelector('#bottom-nav-user');
+    if (userBtn) {
+        userBtn.addEventListener('click', () => {
+            // Si estamos en perfil, no hacer nada
+            if (currentPage === 'perfil.html') {
+                return;
+            }
+            
+            // Intentar abrir menú de usuario
+            const userMenu = document.querySelector('#mainMenu .dropdown-toggle, .navbar .dropdown-toggle');
+            if (userMenu) {
+                userMenu.click();
+            } else {
+                // Verificar si hay sesión activa
+                if (typeof tieneSesionActiva === 'function' && tieneSesionActiva()) {
+                    window.location.href = currentPath.includes('pages/') ? 'perfil.html' : 'pages/perfil.html';
+                } else {
+                    window.location.href = currentPath.includes('pages/') ? 'inicio-sesion.html' : 'pages/inicio-sesion.html';
+                }
+            }
+        });
+    }
+
+    // Verificación periódica para asegurar visibilidad (solo en móvil)
+    if (bottomNav && window.innerWidth <= 991) {
+        setInterval(() => {
+            if (window.innerWidth <= 991) {
+                const computedStyle = window.getComputedStyle(bottomNav);
+                if (computedStyle.display === 'none' || 
+                    computedStyle.visibility === 'hidden' ||
+                    bottomNav.classList.contains('d-none')) {
+                    bottomNav.style.display = 'flex';
+                    bottomNav.style.visibility = 'visible';
+                    bottomNav.style.opacity = '1';
+                    bottomNav.style.position = 'fixed';
+                    bottomNav.style.bottom = '0';
+                    bottomNav.style.left = '0';
+                    bottomNav.style.right = '0';
+                    bottomNav.style.zIndex = '1050';
+                    bottomNav.classList.remove('d-none');
+                }
+            }
+        }, 1000);
+    }
+}
 
 // ============================================
 // FUNCIÓN: Animaciones AOS
@@ -1537,21 +1679,6 @@ function initLazyLoading() {
             img.classList.add('loaded');
         }
     });
-
-    // Detectar soporte WebP
-    function supportsWebP() {
-        const canvas = document.createElement('canvas');
-        canvas.width = 1;
-        canvas.height = 1;
-        return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-    }
-
-    // Si no soporta WebP, remover las sources de WebP
-    if (!supportsWebP()) {
-        document.querySelectorAll('picture source[type="image/webp"]').forEach(source => {
-            source.remove();
-        });
-    }
 }
 
 // ============================================
@@ -1698,15 +1825,24 @@ function initModalServicio() {
 // FUNCIÓN: Chat Demo
 // ============================================
 function initChatDemo() {
-    // Crear botón flotante de chat
+    // Crear botón flotante de chat (solo visible en desktop)
     const chatBtn = document.createElement('button');
-    chatBtn.className = 'btn btn-primary position-fixed bottom-0 start-0 m-4 shadow rounded-circle';
-    chatBtn.style.cssText = 'width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; z-index: 9998;';
+    chatBtn.className = 'btn btn-primary position-fixed bottom-0 start-0 m-4 shadow rounded-circle chat-btn-desktop d-none d-lg-flex';
+    chatBtn.style.cssText = 'width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; z-index: 1040;';
     chatBtn.innerHTML = '<i class="bi bi-chat-dots"></i>';
     chatBtn.setAttribute('data-bs-toggle', 'modal');
     chatBtn.setAttribute('data-bs-target', '#chatModal');
     chatBtn.setAttribute('aria-label', 'Abrir chat');
     document.body.appendChild(chatBtn);
+    
+    // Asegurar visibilidad en desktop
+    if (window.innerWidth > 991) {
+        chatBtn.style.display = 'flex';
+        chatBtn.classList.remove('d-none');
+    } else {
+        chatBtn.style.display = 'none';
+        chatBtn.classList.add('d-none');
+    }
 
     // Crear modal de chat
     const chatModal = document.createElement('div');

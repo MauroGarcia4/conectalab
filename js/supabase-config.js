@@ -545,27 +545,4 @@ async function actualizarPerfilUsuario(userId, datos) {
     }
 }
 
-// ============================================
-// EXPORTAR FUNCIONES (si usas módulos)
-// ============================================
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        SUPABASE_CONFIG,
-        saveFavoritoSupabase,
-        removeFavoritoSupabase,
-        getFavoritosSupabase,
-        saveReviewSupabase,
-        getReviewsSupabase,
-        registrarUsuario,
-        iniciarSesion,
-        cerrarSesion,
-        getUsuarioActual,
-        tieneSesionActiva,
-        getDatosUsuarioCompletos,
-        actualizarPerfilUsuario,
-        guardarContacto,
-        solicitarRecuperacionPassword,
-        actualizarPassword
-    };
-}
 

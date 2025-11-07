@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     if (!usuario) {
         // No hay sesión - redirigir a login
+        // Asegurar que el bottom-nav se mantenga visible durante el redirect
+        const bottomNav = document.querySelector('.bottom-nav');
+        if (bottomNav) {
+            bottomNav.style.display = 'flex';
+            bottomNav.style.visibility = 'visible';
+        }
         window.location.href = 'inicio-sesion.html';
         return;
     }

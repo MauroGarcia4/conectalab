@@ -1,0 +1,19 @@
+{
+  "name": "conectalab",
+  "version": "1.0.0",
+  "description": "Plataforma para conectar profesionales y clientes en San Nicolás de los Arroyos",
+  "scripts": {
+    "build": "node build.js",
+    "minify": "node build.js"
+  },
+  "keywords": [
+    "profesionales",
+    "servicios",
+    "san-nicolas"
+  ],
+  "author": "ConectaLab",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
+
