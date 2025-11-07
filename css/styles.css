@@ -209,12 +209,14 @@ button {
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
   }
 
   .display-5 {
     font-size: 2rem;
+    letter-spacing: -0.01em;
   }
 
   .lead {
@@ -393,6 +395,14 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 1.2;
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+.hero-title {
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 @media (max-width: 768px) {
@@ -509,11 +519,30 @@ button {
     0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.hero h1 {
+.hero h1,
+.hero-title {
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5),
     0 2px 15px rgba(0, 0, 0, 0.4),
     0 1px 5px rgba(0, 0, 0, 0.3);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+@media (min-width: 768px) {
+  .hero h1,
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero h1,
+  .hero-title {
+    font-size: 4rem;
+  }
 }
 
 .hero .lead {

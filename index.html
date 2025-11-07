@@ -111,15 +111,17 @@
     <link rel="preload" href="js/main.js" as="script" />
     
     <!-- Fuentes con font-display para mejor performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -347,7 +349,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10">
-            <h1 class="display-5 fw-bold mb-3" data-aos="fade-up">
+            <h1 class="hero-title display-5 fw-bold mb-3" data-aos="fade-up">
               Conectamos profesionales con oportunidades
             </h1>
             <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">
@@ -503,7 +505,7 @@
         <div class="container">
           <div class="row justify-content-center mb-4">
             <div class="col-lg-8 text-center">
-              <h2 id="estadisticas-title" class="h3 mb-0 opacity-90">Números que nos respaldan</h2>
+              <h2 id="estadisticas-title" class="section-title mb-0 opacity-90">Números que nos respaldan</h2>
             </div>
           </div>
           <div class="row g-4 text-center">
@@ -736,7 +738,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-8">
-              <h2 id="cta-title" class="mb-3 fw-bold">¿Listo para encontrar el profesional ideal?</h2>
+              <h2 id="cta-title" class="section-title mb-3">¿Listo para encontrar el profesional ideal?</h2>
               <p class="lead opacity-75 mb-4">Buscá por categoría, zona o especialidad</p>
               <a href="pages/servicios.html" class="btn btn-light btn-lg">
                 <i class="bi bi-search me-2"></i>Explorar todos los servicios
