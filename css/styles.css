@@ -421,6 +421,14 @@ button {
       var(--primary-dark) 100%);
 }
 
+/* Asegurar que los títulos en bg-gradient-primary sean completamente visibles */
+.bg-gradient-primary .section-title,
+.bg-gradient-primary h2,
+.bg-gradient-primary h3 {
+  color: white !important;
+  opacity: 1 !important;
+}
+
 .btn-white {
   background: var(--white);
   color: var(--primary);
