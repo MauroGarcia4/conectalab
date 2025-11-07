@@ -1,3 +1,17 @@
 .DS_Store
 node_modules/
 *.log
+
+# Archivos de Office que no deben estar en el repositorio
+*.xlsx
+*.xls
+*.docx
+*.doc
+*.pptx
+*.ppt
+*.pdf
+
+# Archivos temporales
+*.tmp
+*.temp
+*~
