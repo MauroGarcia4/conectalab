@@ -429,6 +429,32 @@ button {
   opacity: 1 !important;
 }
 
+/* Estilos para el logo del navbar */
+.navbar-logo {
+  height: auto;
+  max-height: 40px;
+  width: auto;
+  max-width: 160px;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-logo:hover {
+  opacity: 0.8;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 768px) {
+  .navbar-logo {
+    max-height: 32px;
+    max-width: 130px;
+  }
+}
+
+/* Modo oscuro - ajustar logo si es necesario */
+[data-theme="dark"] .navbar-logo {
+  filter: brightness(0) invert(1);
+}
+
 .btn-white {
   background: var(--white);
   color: var(--primary);
