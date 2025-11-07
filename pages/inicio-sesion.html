@@ -170,7 +170,10 @@
                     id="email" 
                     placeholder="nombre@correo.com" 
                     required
+                    autocomplete="email"
+                    aria-describedby="email-help"
                   >
+                  <div id="email-help" class="form-text visually-hidden">Ingresá tu correo electrónico</div>
                 </div>
               </div>
 
@@ -188,7 +191,10 @@
                     id="password" 
                     placeholder="••••••••" 
                     required
+                    autocomplete="current-password"
+                    aria-describedby="password-help"
                   >
+                  <div id="password-help" class="form-text visually-hidden">Ingresá tu contraseña</div>
                 </div>
                 <div class="d-flex justify-content-between mt-2">
                   <div class="form-check">
@@ -201,9 +207,19 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold mb-3">
-                <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+              <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold mb-3" id="btn-login" aria-label="Iniciar sesión">
+                <span class="btn-text">
+                  <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+                </span>
+                <span class="btn-loading d-none">
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  Iniciando sesión...
+                </span>
               </button>
+              <div id="mensaje-error-login" class="alert alert-danger d-none mt-3" role="alert" aria-live="assertive">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                <span class="error-text">Credenciales incorrectas. Por favor, verificá tus datos.</span>
+              </div>
 
               <div class="text-center">
                 <p class="mb-0 small text-muted">
@@ -302,12 +318,20 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS - Defer para no bloquear render -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+    defer
+  ></script>
   <!-- Supabase JS -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/supabase-config.js"></script>
-  <!-- JavaScript propio -->
-  <script src="../js/main.js"></script>
+  <!-- Form Enhancements -->
+  <script src="../js/utils/form-enhancements.js" defer></script>
+  <!-- JavaScript propio - Defer para mejor performance -->
+  <script src="../js/main.js" defer></script>
   <!-- Cargar email recordado -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {

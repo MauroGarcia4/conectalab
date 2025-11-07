@@ -18,6 +18,36 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://conectalab.com.ar/pages/servicios.html" />
     
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Professional Services Directory",
+      "name": "Servicios Profesionales en ConectaLab",
+      "description": "Directorio de servicios profesionales en San Nicolás de los Arroyos",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "ConectaLab",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Nicolás de los Arroyos",
+          "addressRegion": "Buenos Aires",
+          "addressCountry": "AR"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "San Nicolás de los Arroyos"
+      },
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://conectalab.com.ar/pages/servicios.html",
+        "serviceType": "Online"
+      }
+    }
+    </script>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://conectalab.com.ar/pages/servicios.html" />
@@ -486,8 +516,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Electricidad</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="electricidad" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="electricidad" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Electricidad a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -509,7 +539,7 @@
                     <i class="bi bi-check-circle me-1"></i>Disponible
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="electricidad">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="electricidad" aria-label="Ver detalles de Electricidad">
                   Ver detalles
                 </button>
               </div>
@@ -530,8 +560,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Diseño Gráfico</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="diseno" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="diseno" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Diseño Gráfico a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -571,8 +601,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Plomería</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="plomeria" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="plomeria" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Plomería a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -594,7 +624,7 @@
                     <i class="bi bi-clock me-1"></i>24hs
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="plomeria">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="plomeria" aria-label="Ver detalles de Plomería">
                   Ver detalles
                 </button>
               </div>
@@ -615,8 +645,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Carpintería</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="carpinteria" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="carpinteria" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Carpintería a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -635,7 +665,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Sur
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="carpinteria">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="carpinteria" aria-label="Ver detalles de Carpintería">
                   Ver detalles
                 </button>
               </div>
@@ -649,12 +679,15 @@
                 class="card-img-top"
                 alt="Tecnología"
                 loading="lazy"
+                decoding="async"
+                width="300"
+                height="200"
               />
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Tecnología</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="tecnologia" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="tecnologia" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Tecnología a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -673,7 +706,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Centro
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="tecnologia">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="tecnologia" aria-label="Ver detalles de Tecnología">
                   Ver detalles
                 </button>
               </div>
@@ -694,8 +727,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Pintura</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="pintura" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="pintura" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Pintura a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -714,7 +747,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Este
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="pintura">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="pintura" aria-label="Ver detalles de Pintura">
                   Ver detalles
                 </button>
               </div>
@@ -728,12 +761,15 @@
                 class="card-img-top"
                 alt="Albañilería"
                 loading="lazy"
+                decoding="async"
+                width="300"
+                height="200"
               />
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Albañilería</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="albanileria" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="albanileria" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Albañilería a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -752,7 +788,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Oeste
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="albanileria">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="albanileria" aria-label="Ver detalles de Albañilería">
                   Ver detalles
                 </button>
               </div>
@@ -773,8 +809,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Clases Particulares</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="clases" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="clases" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Clases Particulares a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -793,7 +829,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Centro
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="clases">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="clases" aria-label="Ver detalles de Clases Particulares">
                   Ver detalles
                 </button>
               </div>
@@ -814,8 +850,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Limpieza</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="limpieza" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="limpieza" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Limpieza a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -834,7 +870,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Sur
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="limpieza">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="limpieza" aria-label="Ver detalles de Limpieza">
                   Ver detalles
                 </button>
               </div>
@@ -848,12 +884,15 @@
                 class="card-img-top"
                 alt="Cerrajería"
                 loading="lazy"
+                decoding="async"
+                width="300"
+                height="200"
               />
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Cerrajería</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="cerrajeria" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="cerrajeria" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Cerrajería a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -875,7 +914,7 @@
                     <i class="bi bi-clock me-1"></i>24hs
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="cerrajeria">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="cerrajeria" aria-label="Ver detalles de Cerrajería">
                   Ver detalles
                 </button>
               </div>
@@ -896,8 +935,8 @@
               <div class="card-body text-center">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <h3 class="h6 mb-0 fw-semibold">Fotografía</h3>
-                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="fotografia" data-bs-toggle="tooltip" title="Agregar a favoritos">
-                    <i class="bi bi-heart"></i>
+                  <button class="btn btn-sm btn-link p-0 favorito-btn" data-servicio="fotografia" data-bs-toggle="tooltip" title="Agregar a favoritos" aria-label="Agregar Fotografía a favoritos">
+                    <i class="bi bi-heart" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="stars mb-2">
@@ -916,7 +955,7 @@
                     <i class="bi bi-geo-alt me-1"></i>Norte
                   </span>
                 </div>
-                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="fotografia">
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalServicio" data-servicio="fotografia" aria-label="Ver detalles de Fotografía">
                   Ver detalles
                 </button>
               </div>

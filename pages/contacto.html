@@ -18,6 +18,33 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://conectalab.com.ar/pages/contacto.html" />
     
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contacto - ConectaLab",
+      "description": "Página de contacto de ConectaLab",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "ConectaLab",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+54-336-402-2033",
+          "contactType": "customer service",
+          "email": "contacto@conectalab.com.ar",
+          "availableLanguage": "Spanish"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Nicolás de los Arroyos",
+          "addressRegion": "Buenos Aires",
+          "addressCountry": "AR"
+        }
+      }
+    }
+    </script>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://conectalab.com.ar/pages/contacto.html" />
@@ -339,7 +366,10 @@
                         class="form-control"
                         placeholder="Nombre y apellido"
                         required
+                        aria-describedby="nombre-help"
+                        autocomplete="name"
                       />
+                      <div id="nombre-help" class="form-text visually-hidden">Ingresá tu nombre completo</div>
                     </div>
                     <div class="col-md-6">
                       <label for="email-contacto" class="form-label fw-semibold">Email</label>
@@ -350,11 +380,14 @@
                         class="form-control"
                         placeholder="conectalab@mail.com"
                         required
+                        aria-describedby="email-contacto-help"
+                        autocomplete="email"
                       />
+                      <div id="email-contacto-help" class="form-text visually-hidden">Ingresá tu correo electrónico</div>
                     </div>
                     <div class="col-12">
                       <label for="motivo" class="form-label fw-semibold">Motivo del contacto</label>
-                      <select id="motivo" name="motivo" class="form-select" required>
+                      <select id="motivo" name="motivo" class="form-select" required aria-describedby="motivo-help">
                         <option value="" selected>Seleccioná una opción</option>
                         <option value="consulta-general">Consulta general</option>
                         <option value="servicio">Solicitar un servicio</option>
@@ -363,6 +396,7 @@
                         <option value="colaboracion">Propuesta o colaboración</option>
                         <option value="otro">Otro motivo</option>
                       </select>
+                      <div id="motivo-help" class="form-text visually-hidden">Seleccioná el motivo de tu contacto</div>
                     </div>
                     <div class="col-12">
                       <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
@@ -373,12 +407,31 @@
                         rows="5"
                         placeholder="Contanos en qué podemos ayudarte"
                         required
+                        aria-describedby="mensaje-help"
+                        maxlength="1000"
                       ></textarea>
+                      <div id="mensaje-help" class="form-text">
+                        <span id="contador-caracteres">0</span> / 1000 caracteres
+                      </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100 btn-lg" type="submit">
-                        <i class="bi bi-send me-2"></i>Enviar mensaje
+                      <button class="btn btn-primary w-100 btn-lg" type="submit" id="btn-enviar-contacto" aria-label="Enviar formulario de contacto">
+                        <span class="btn-text">
+                          <i class="bi bi-send me-2"></i>Enviar mensaje
+                        </span>
+                        <span class="btn-loading d-none">
+                          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          Enviando...
+                        </span>
                       </button>
+                      <div id="mensaje-exito-contacto" class="alert alert-success mt-3 d-none" role="alert" aria-live="polite">
+                        <i class="bi bi-check-circle me-2"></i>
+                        <strong>¡Mensaje enviado!</strong> Te responderemos a la brevedad.
+                      </div>
+                      <div id="mensaje-error-contacto" class="alert alert-danger mt-3 d-none" role="alert" aria-live="assertive">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>Error:</strong> <span class="error-text">No se pudo enviar el mensaje. Por favor, intentá nuevamente.</span>
+                      </div>
                     </div>
                   </div>
                 </form>

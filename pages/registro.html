@@ -168,9 +168,14 @@
                     <input 
                       type="text" 
                       class="form-control" 
+                      id="nombre-registro"
+                      name="nombre"
                       placeholder="Tu nombre y apellido" 
                       required
+                      autocomplete="name"
+                      aria-describedby="nombre-registro-help"
                     >
+                    <div id="nombre-registro-help" class="form-text visually-hidden">Ingresá tu nombre completo</div>
                   </div>
                 </div>
 
@@ -185,9 +190,14 @@
                     <input 
                       type="email" 
                       class="form-control" 
+                      id="email-registro"
+                      name="email"
                       placeholder="nombre@correo.com" 
                       required
+                      autocomplete="email"
+                      aria-describedby="email-registro-help"
                     >
+                    <div id="email-registro-help" class="form-text visually-hidden">Ingresá tu correo electrónico</div>
                   </div>
                 </div>
 
@@ -202,13 +212,16 @@
                     <input 
                       type="password" 
                       class="form-control" 
+                      id="password-registro"
+                      name="password"
                       placeholder="Mínimo 8 caracteres" 
                       required
+                      autocomplete="new-password"
+                      minlength="8"
+                      aria-describedby="password-registro-help"
                     >
+                    <div id="password-registro-help" class="form-text">Debe tener al menos 8 caracteres</div>
                   </div>
-                  <small class="text-muted">
-                    <i class="bi bi-info-circle me-1"></i>Debe tener al menos 8 caracteres
-                  </small>
                 </div>
 
                 <div class="col-12">
@@ -222,9 +235,15 @@
                     <input 
                       type="password" 
                       class="form-control" 
+                      id="password-confirmar-registro"
+                      name="password-confirmar"
                       placeholder="Repetí tu contraseña" 
                       required
+                      autocomplete="new-password"
+                      minlength="8"
+                      aria-describedby="password-confirmar-registro-help"
                     >
+                    <div id="password-confirmar-registro-help" class="form-text">Las contraseñas deben coincidir</div>
                   </div>
                 </div>
 
@@ -250,9 +269,19 @@
                 </div>
 
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold mb-3">
-                    <i class="bi bi-check-circle me-2"></i>Crear cuenta
+                  <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold mb-3" id="btn-registro" aria-label="Crear cuenta">
+                    <span class="btn-text">
+                      <i class="bi bi-check-circle me-2"></i>Crear cuenta
+                    </span>
+                    <span class="btn-loading d-none">
+                      <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                      Creando cuenta...
+                    </span>
                   </button>
+                  <div id="mensaje-error-registro" class="alert alert-danger d-none mt-3" role="alert" aria-live="assertive">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <span class="error-text">Error al crear la cuenta. Por favor, intentá nuevamente.</span>
+                  </div>
                 </div>
               </div>
 
