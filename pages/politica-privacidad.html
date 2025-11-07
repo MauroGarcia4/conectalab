@@ -65,6 +65,8 @@
   </head>
 
   <body id="top">
+    <!-- Skip to main content link para accesibilidad -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Ir al contenido principal</a>
 
     <!-- Botón volver arriba -->
     <a
@@ -120,8 +122,60 @@
               <a class="nav-link" href="guias.html">Guías</a>
             </li>
             
-            <!-- Selector de Temas -->
+            <!-- Menú de Accesibilidad -->
             <li class="nav-item ms-lg-3">
+              <button
+                id="accessibility-menu-toggle"
+                class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Menú de accesibilidad"
+                style="width: 38px; height: 38px"
+                title="Opciones de accesibilidad"
+              >
+                <i class="bi bi-universal-access fs-5"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" style="min-width: 280px;">
+                <li><h6 class="dropdown-header"><i class="bi bi-universal-access me-2"></i>Accesibilidad</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <div class="px-3 py-2">
+                    <label class="form-label small mb-2">Tamaño de fuente</label>
+                    <div class="d-flex gap-2 align-items-center">
+                      <button class="btn btn-sm btn-outline-secondary" id="font-decrease" aria-label="Disminuir fuente">
+                        <i class="bi bi-dash-lg"></i>
+                      </button>
+                      <span class="flex-grow-1 text-center small" id="font-size-display">100%</span>
+                      <button class="btn btn-sm btn-outline-secondary" id="font-increase" aria-label="Aumentar fuente">
+                        <i class="bi bi-plus-lg"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-secondary" id="font-reset" aria-label="Restablecer fuente">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" href="#" id="toggle-high-contrast">
+                    <i class="bi bi-circle-half me-2"></i>
+                    <span>Alto contraste</span>
+                    <i class="bi bi-check2 float-end d-none" id="high-contrast-check"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="toggle-reading-mode">
+                    <i class="bi bi-book me-2"></i>
+                    <span>Modo lectura</span>
+                    <i class="bi bi-check2 float-end d-none" id="reading-mode-check"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Selector de Temas -->
+            <li class="nav-item ms-lg-2">
               <button
                 id="theme-toggle"
                 class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
@@ -324,6 +378,14 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <!-- Error Tracker - Cargar primero para capturar errores -->
+    <script src="../js/utils/error-tracker.js"></script>
+    <!-- Touch Gestures - Solo móvil -->
+    <script src="../js/utils/touch-gestures.js" defer></script>
+    <!-- Mobile Forms Optimization -->
+    <script src="../js/utils/mobile-forms.js" defer></script>
+    <!-- Accessibility Features -->
+    <script src="../js/utils/accessibility.js" defer></script>
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase-config.js"></script>

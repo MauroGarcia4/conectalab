@@ -126,6 +126,8 @@
   </head>
 
   <body id="top">
+    <!-- Skip to main content link para accesibilidad -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Ir al contenido principal</a>
 
     <!-- Botón volver arriba -->
     <a
@@ -228,13 +230,6 @@
                     <i class="bi bi-book me-2"></i>
                     <span>Modo lectura</span>
                     <i class="bi bi-check2 float-end d-none" id="reading-mode-check"></i>
-                  </a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                  <a class="dropdown-item" href="#" id="start-tour">
-                    <i class="bi bi-compass me-2"></i>
-                    <span>Iniciar tour guiado</span>
                   </a>
                 </li>
               </ul>
@@ -1227,14 +1222,16 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <!-- Accessibility Features -->
-    <script src="../js/utils/accessibility.js" defer></script>
+    <!-- Error Tracker - Cargar primero para capturar errores -->
+    <script src="../js/utils/error-tracker.js"></script>
     <!-- View Toggle -->
     <script src="../js/utils/view-toggle.js" defer></script>
-    <!-- Export Favorites -->
-    <script src="../js/utils/export-favorites.js" defer></script>
-    <!-- Onboarding Tour -->
-    <script src="../js/utils/onboarding-tour.js" defer></script>
+    <!-- Touch Gestures - Solo móvil -->
+    <script src="../js/utils/touch-gestures.js" defer></script>
+    <!-- Mobile Forms Optimization -->
+    <script src="../js/utils/mobile-forms.js" defer></script>
+    <!-- Accessibility Features -->
+    <script src="../js/utils/accessibility.js" defer></script>
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase-config.js"></script>
