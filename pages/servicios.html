@@ -126,8 +126,6 @@
   </head>
 
   <body id="top">
-    <!-- Skip Link -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- Botón volver arriba -->
     <a
@@ -179,55 +177,22 @@
             <li class="nav-item">
               <a class="nav-link" href="contacto.html">Contacto</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="guias.html">Guías</a>
+            </li>
+            
             <!-- Selector de Temas -->
-            <li class="nav-item dropdown ms-lg-3">
+            <li class="nav-item ms-lg-3">
               <button
                 id="theme-toggle"
                 class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
                 type="button"
                 aria-label="Cambiar tema"
                 style="width: 38px; height: 38px"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                title="Temas"
+                title="Cambiar entre modo claro y oscuro"
               >
-                <i class="bi bi-palette-fill fs-5" id="theme-icon"></i>
+                <i class="bi bi-moon-fill fs-5" id="theme-icon"></i>
               </button>
-              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" id="theme-menu">
-                <li><h6 class="dropdown-header">Temas</h6></li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="light" type="button">
-                    <i class="bi bi-sun me-2"></i>Claro
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="dark" type="button">
-                    <i class="bi bi-moon me-2"></i>Oscuro
-                  </button>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><h6 class="dropdown-header">Esquemas de Color</h6></li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="blue" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #2563eb; border-radius: 3px;"></span>Azul (Default)
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="green" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #10b981; border-radius: 3px;"></span>Verde
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="purple" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></span>Púrpura
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="orange" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #f59e0b; border-radius: 3px;"></span>Naranja
-                  </button>
-                </li>
-              </ul>
             </li>
             <li class="nav-item dropdown ms-lg-2">
               <button
@@ -245,12 +210,12 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
                 <li>
-                  <a class="dropdown-item" href="inicio-sesion.html">
+                  <a class="dropdown-item" href="inicio-sesion.html" id="login-link">
                     <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="registro.html">
+                  <a class="dropdown-item" href="registro.html" id="registro-link">
                     <i class="bi bi-person-plus me-2"></i>Registrarse
                   </a>
                 </li>
@@ -264,6 +229,11 @@
                   <a class="dropdown-item" href="#" id="favoritos-link">
                     <i class="bi bi-heart me-2"></i>Favoritos
                     <span id="favoritos-count" class="badge bg-primary rounded-pill ms-2">0</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#" id="logout-btn" style="display: none;">
+                    <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
                   </a>
                 </li>
               </ul>
@@ -1174,6 +1144,9 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
     <!-- JavaScript propio - Defer para mejor performance -->
     <script src="../js/main.js" defer></script>
   </body>

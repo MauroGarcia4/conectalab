@@ -96,8 +96,6 @@
   </head>
 
   <body id="top">
-    <!-- Skip Link -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- Botón volver arriba -->
     <a
@@ -154,54 +152,17 @@
             </li>
             
             <!-- Selector de Temas -->
-            <li class="nav-item dropdown ms-lg-3">
+            <li class="nav-item ms-lg-3">
               <button
                 id="theme-toggle"
                 class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
                 type="button"
                 aria-label="Cambiar tema"
                 style="width: 38px; height: 38px"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                title="Temas"
+                title="Cambiar entre modo claro y oscuro"
               >
-                <i class="bi bi-palette-fill fs-5" id="theme-icon"></i>
+                <i class="bi bi-moon-fill fs-5" id="theme-icon"></i>
               </button>
-              <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" id="theme-menu">
-                <li><h6 class="dropdown-header">Temas</h6></li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="light" type="button">
-                    <i class="bi bi-sun me-2"></i>Claro
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="dark" type="button">
-                    <i class="bi bi-moon me-2"></i>Oscuro
-                  </button>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><h6 class="dropdown-header">Esquemas de Color</h6></li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="blue" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #2563eb; border-radius: 3px;"></span>Azul (Default)
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="green" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #10b981; border-radius: 3px;"></span>Verde
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="purple" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></span>Púrpura
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item theme-option" data-theme="orange" type="button">
-                    <span class="theme-preview me-2" style="display: inline-block; width: 16px; height: 16px; background: #f59e0b; border-radius: 3px;"></span>Naranja
-                  </button>
-                </li>
-              </ul>
             </li>
             
             <!-- Menú de Usuario -->
@@ -221,12 +182,12 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
                 <li>
-                  <a class="dropdown-item" href="inicio-sesion.html">
+                  <a class="dropdown-item" href="inicio-sesion.html" id="login-link">
                     <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="registro.html">
+                  <a class="dropdown-item" href="registro.html" id="registro-link">
                     <i class="bi bi-person-plus me-2"></i>Registrarse
                   </a>
                 </li>
@@ -240,6 +201,11 @@
                   <a class="dropdown-item" href="#" id="favoritos-link">
                     <i class="bi bi-heart me-2"></i>Favoritos
                     <span id="favoritos-count" class="badge bg-primary rounded-pill ms-2">0</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#" id="logout-btn" style="display: none;">
+                    <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
                   </a>
                 </li>
               </ul>
@@ -262,7 +228,7 @@
     </div>
 
     <!-- Header -->
-    <section class="page-header text-white text-center" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);">
+    <section class="guias page-header text-white text-center">
       <div class="container">
         <h1 class="fw-bold">Guías y Tutoriales</h1>
         <p class="opacity-75">Aprendé cómo usar ConectaLab con nuestras guías prácticas</p>
@@ -293,7 +259,7 @@
                   <h3 class="h5 mb-0">Guía para Contratar Servicios</h3>
                 </div>
                 <p class="text-muted">Pasos esenciales para contratar profesionales de confianza. Aprendé cómo buscar, comparar y contactar profesionales en nuestra plataforma.</p>
-                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalGuia1">Ver guía completa</button>
               </div>
             </div>
           </div>
@@ -309,7 +275,7 @@
                   <h3 class="h5 mb-0">Cómo Verificar un Profesional</h3>
                 </div>
                 <p class="text-muted">Aprendé a verificar credenciales, referencias y reseñas antes de contratar. Consejos para identificar profesionales confiables.</p>
-                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalGuia2">Ver guía completa</button>
               </div>
             </div>
           </div>
@@ -325,7 +291,7 @@
                   <h3 class="h5 mb-0">Presupuestos y Contratos</h3>
                 </div>
                 <p class="text-muted">Todo lo que necesitás saber sobre presupuestos, acuerdos y contratos. Cómo negociar y formalizar tus trabajos de forma segura.</p>
-                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalGuia3">Ver guía completa</button>
               </div>
             </div>
           </div>
@@ -341,7 +307,7 @@
                   <h3 class="h5 mb-0">Mantenimiento Preventivo</h3>
                 </div>
                 <p class="text-muted">Consejos para mantener tu hogar en perfecto estado y evitar problemas mayores. Calendario de mantenimiento recomendado.</p>
-                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalGuia4">Ver guía completa</button>
               </div>
             </div>
           </div>
@@ -357,7 +323,7 @@
                   <h3 class="h5 mb-0">Emergencias en el Hogar</h3>
                 </div>
                 <p class="text-muted">Qué hacer ante emergencias eléctricas, de plomería u otras. Pasos inmediatos y cómo contactar profesionales de urgencia.</p>
-                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalGuia5">Ver guía completa</button>
               </div>
             </div>
           </div>
@@ -373,13 +339,447 @@
                   <h3 class="h5 mb-0">Cómo Calificar un Servicio</h3>
                 </div>
                 <p class="text-muted">Guía para dejar reseñas útiles y constructivas. Tu opinión ayuda a otros usuarios a tomar mejores decisiones.</p>
-                <a href="#" class="btn btn-sm btn-primary">Ver guía completa</a>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalGuia6">Ver guía completa</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+
+    <!-- ============================================
+         MODALES DE GUÍAS
+         ============================================ -->
+    
+    <!-- Modal Guía 1: Contratar Servicios -->
+    <div class="modal fade" id="modalGuia1" tabindex="-1" aria-labelledby="modalGuia1Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGuia1Label">
+              <i class="bi bi-lightbulb text-primary me-2"></i>Guía para Contratar Servicios
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-semibold mb-3">Pasos esenciales para contratar profesionales de confianza</h6>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">1. Buscar el servicio</h6>
+            <p>Ingresá a la sección de <strong>Servicios</strong> y utilizá los filtros para encontrar el profesional que necesitás. Podés filtrar por categoría, zona o especialidad. Revisá los perfiles completos para ver experiencia, calificaciones y trabajos anteriores.</p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">2. Comparar opciones</h6>
+            <p>Revisá varios profesionales antes de decidir. Compará:
+            <ul>
+              <li>Calificaciones y reseñas de otros clientes</li>
+              <li>Experiencia y años en el rubro</li>
+              <li>Zona de cobertura</li>
+              <li>Disponibilidad y tiempo de respuesta</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">3. Contactar al profesional</h6>
+            <p>Una vez que elegiste el profesional, utilizá el botón <strong>"Contactar"</strong> en su perfil. En tu mensaje, sé claro sobre:
+            <ul>
+              <li>El tipo de trabajo que necesitás</li>
+              <li>Ubicación del trabajo</li>
+              <li>Urgencia o fecha límite</li>
+              <li>Cualquier detalle específico importante</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">4. Solicitar presupuesto</h6>
+            <p>Pedí siempre un presupuesto por escrito antes de confirmar el trabajo. El presupuesto debe incluir:
+            <ul>
+              <li>Descripción detallada del trabajo</li>
+              <li>Materiales incluidos o no</li>
+              <li>Precio final y forma de pago</li>
+              <li>Tiempo estimado de ejecución</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">5. Confirmar y coordinar</h6>
+            <p>Una vez que aceptaste el presupuesto, coordiná fecha y horario. Guardá todos los mensajes y acuerdos. Si es posible, solicitá un contrato simple para trabajos de mayor envergadura.</p>
+            
+            <div class="alert alert-info mt-4 mb-0">
+              <i class="bi bi-info-circle me-2"></i><strong>Tip:</strong> Guardá los contactos de los profesionales que te gustaron en tus favoritos para futuros trabajos.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <a href="servicios.html" class="btn btn-primary">Ir a Servicios</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Guía 2: Verificar Profesional -->
+    <div class="modal fade" id="modalGuia2" tabindex="-1" aria-labelledby="modalGuia2Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGuia2Label">
+              <i class="bi bi-check-circle text-success me-2"></i>Cómo Verificar un Profesional
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-semibold mb-3">Aprendé a identificar profesionales confiables</h6>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">1. Verificar el perfil</h6>
+            <p>Revisá el perfil completo del profesional en ConectaLab:
+            <ul>
+              <li><strong>Perfil verificado:</strong> Buscá el badge de verificación que indica que el profesional pasó por nuestro proceso de validación</li>
+              <li><strong>Información completa:</strong> Un perfil serio tiene foto, descripción detallada y experiencia documentada</li>
+              <li><strong>Contacto visible:</strong> Verificá que tenga formas de contacto disponibles</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">2. Revisar calificaciones y reseñas</h6>
+            <p>Las reseñas de otros clientes son fundamentales:
+            <ul>
+              <li>Leé varias reseñas, no solo las más recientes</li>
+              <li>Prestá atención a reseñas detalladas que explican la experiencia completa</li>
+              <li>Buscá patrones: ¿los clientes mencionan puntualidad, calidad, limpieza?</li>
+              <li>Si hay quejas, revisá cómo el profesional respondió a ellas</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">3. Verificar experiencia</h6>
+            <p>Un profesional confiable muestra:
+            <ul>
+              <li>Años de experiencia en el rubro</li>
+              <li>Galería de trabajos anteriores (si está disponible)</li>
+              <li>Especialidades y certificaciones</li>
+              <li>Zona de cobertura clara</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">4. Solicitar referencias</h6>
+            <p>No dudes en pedir referencias directamente al profesional:
+            <ul>
+              <li>Pedí contactos de trabajos anteriores similares</li>
+              <li>Contactá a esas referencias para conocer su experiencia</li>
+              <li>Un profesional confiable estará dispuesto a compartir referencias</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">5. Red flags a evitar</h6>
+            <p>Señales de alerta:
+            <ul>
+              <li>Presión para pagar por adelantado sin contrato</li>
+              <li>Precios demasiado bajos comparados con el mercado</li>
+              <li>Falta de información o comunicación evasiva</li>
+              <li>Perfil sin verificar y sin reseñas</li>
+              <li>Solicitud de pagos solo en efectivo sin recibo</li>
+            </ul>
+            </p>
+            
+            <div class="alert alert-success mt-4 mb-0">
+              <i class="bi bi-shield-check me-2"></i><strong>Recordá:</strong> Los profesionales verificados en ConectaLab pasaron por un proceso de validación de identidad.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Guía 3: Presupuestos y Contratos -->
+    <div class="modal fade" id="modalGuia3" tabindex="-1" aria-labelledby="modalGuia3Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGuia3Label">
+              <i class="bi bi-shield-check text-warning me-2"></i>Presupuestos y Contratos
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-semibold mb-3">Cómo formalizar tus trabajos de forma segura</h6>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">1. Solicitar presupuesto</h6>
+            <p>Siempre pedí un presupuesto por escrito antes de comenzar cualquier trabajo. El presupuesto debe incluir:
+            <ul>
+              <li>Descripción detallada del trabajo a realizar</li>
+              <li>Lista de materiales (especificar si están incluidos o no)</li>
+              <li>Precio total y forma de pago</li>
+              <li>Plazo de ejecución estimado</li>
+              <li>Garantía del trabajo (si aplica)</li>
+              <li>Condiciones de pago (adelanto, pagos parciales, etc.)</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">2. Comparar presupuestos</h6>
+            <p>Para trabajos importantes, pedí al menos 2-3 presupuestos:
+            <ul>
+              <li>Compará no solo el precio, sino también la calidad de los materiales propuestos</li>
+              <li>Revisá los tiempos de ejecución</li>
+              <li>Evaluá la comunicación y profesionalismo del profesional</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">3. Acuerdo verbal vs. escrito</h6>
+            <p><strong>Para trabajos pequeños:</strong> Un acuerdo verbal puede ser suficiente, pero siempre guardá los mensajes de WhatsApp o email donde se acordaron los términos.</p>
+            <p><strong>Para trabajos medianos/grandes:</strong> Es altamente recomendable un contrato escrito que incluya:
+            <ul>
+              <li>Datos de ambas partes</li>
+              <li>Descripción detallada del trabajo</li>
+              <li>Precio y forma de pago</li>
+              <li>Plazos de inicio y finalización</li>
+              <li>Garantías y responsabilidades</li>
+              <li>Condiciones de cancelación</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">4. Formas de pago</h6>
+            <p>Establecé claramente:
+            <ul>
+              <li>Si se requiere un adelanto (normalmente 30-50% para trabajos grandes)</li>
+              <li>Cuándo se realizarán los pagos parciales</li>
+              <li>Cuándo se pagará el saldo final (preferiblemente al finalizar y verificar el trabajo)</li>
+              <li>Forma de pago aceptada (efectivo, transferencia, etc.)</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">5. Cambios y modificaciones</h6>
+            <p>Si durante el trabajo necesitás hacer cambios:
+            <ul>
+              <li>Comunicá los cambios antes de que se ejecuten</li>
+              <li>Solicitá un presupuesto adicional para los cambios</li>
+              <li>Acordá por escrito cualquier modificación al presupuesto original</li>
+            </ul>
+            </p>
+            
+            <div class="alert alert-warning mt-4 mb-0">
+              <i class="bi bi-exclamation-triangle me-2"></i><strong>Importante:</strong> Nunca pagués el 100% del trabajo antes de que esté terminado y verificado.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Guía 4: Mantenimiento Preventivo -->
+    <div class="modal fade" id="modalGuia4" tabindex="-1" aria-labelledby="modalGuia4Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGuia4Label">
+              <i class="bi bi-question-circle text-info me-2"></i>Mantenimiento Preventivo
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-semibold mb-3">Calendario de mantenimiento recomendado para tu hogar</h6>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Mensual</h6>
+            <ul>
+              <li><strong>Electricidad:</strong> Revisar que los disyuntores funcionen correctamente</li>
+              <li><strong>Plomería:</strong> Revisar goteos en canillas y pérdidas en conexiones</li>
+              <li><strong>Ventilación:</strong> Limpiar filtros de aires acondicionados</li>
+              <li><strong>Seguridad:</strong> Probar alarmas y detectores de humo</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Trimestral (cada 3 meses)</h6>
+            <ul>
+              <li><strong>Plomería:</strong> Limpiar desagües y sifones</li>
+              <li><strong>Electricidad:</strong> Revisar instalaciones exteriores por daños</li>
+              <li><strong>Calefacción:</strong> Limpiar y revisar calderas/estufas</li>
+              <li><strong>Pintura:</strong> Revisar humedades y grietas en paredes</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Semestral (cada 6 meses)</h6>
+            <ul>
+              <li><strong>Electricidad:</strong> Revisión completa de la instalación por un electricista</li>
+              <li><strong>Plomería:</strong> Inspección de cañerías principales</li>
+              <li><strong>Techos:</strong> Revisar tejas, canaletas y desagües</li>
+              <li><strong>Gas:</strong> Revisión de instalaciones y artefactos por un gasista matriculado</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Anual</h6>
+            <ul>
+              <li><strong>Instalación eléctrica:</strong> Revisión completa y certificación si es necesario</li>
+              <li><strong>Plomería:</strong> Limpieza profunda de cañerías</li>
+              <li><strong>Pintura exterior:</strong> Revisar y retocar según necesidad</li>
+              <li><strong>Estructura:</strong> Revisar grietas, humedades y estado general</li>
+              <li><strong>Calefacción/Refrigeración:</strong> Servicio completo de equipos</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Consejos adicionales</h6>
+            <ul>
+              <li>Mantené un registro de los mantenimientos realizados</li>
+              <li>Guardá facturas y comprobantes de trabajos profesionales</li>
+              <li>Tené un contacto de confianza para cada tipo de servicio</li>
+              <li>Actuá rápidamente ante señales de problemas (goteos, olores, ruidos anormales)</li>
+            </ul>
+            
+            <div class="alert alert-info mt-4 mb-0">
+              <i class="bi bi-lightbulb me-2"></i><strong>Tip:</strong> El mantenimiento preventivo es más económico que las reparaciones de emergencia. Programá las revisiones en tu calendario.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <a href="servicios.html" class="btn btn-primary">Buscar Profesionales</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Guía 5: Emergencias -->
+    <div class="modal fade" id="modalGuia5" tabindex="-1" aria-labelledby="modalGuia5Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGuia5Label">
+              <i class="bi bi-exclamation-triangle text-danger me-2"></i>Emergencias en el Hogar
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-semibold mb-3">Qué hacer ante emergencias y cómo contactar profesionales de urgencia</h6>
+            
+            <h6 class="mt-4 mb-2 fw-semibold text-danger">🚨 EMERGENCIAS ELÉCTRICAS</h6>
+            <p><strong>Si hay riesgo de electrocución o incendio:</strong></p>
+            <ol>
+              <li><strong>Cortá la electricidad:</strong> Ve al tablero y bajá el disyuntor principal</li>
+              <li><strong>No toques cables:</strong> No intentes arreglar nada si hay humo, chispas o cables expuestos</li>
+              <li><strong>Ventilá:</strong> Si hay olor a quemado, abrí ventanas y alejá a personas y mascotas</li>
+              <li><strong>Contactá urgente:</strong> Buscá un electricista de emergencia en ConectaLab o llamá a bomberos (100) si hay riesgo de incendio</li>
+            </ol>
+            
+            <h6 class="mt-4 mb-2 fw-semibold text-danger">💧 EMERGENCIAS DE PLOMERÍA</h6>
+            <p><strong>Fugas de agua importantes:</strong></p>
+            <ol>
+              <li><strong>Cortá el agua:</strong> Cerrá la llave de paso principal (generalmente en el baño o cocina)</li>
+              <li><strong>Desagotá:</strong> Si hay acumulación de agua, intentá desagotar hacia desagües</li>
+              <li><strong>Protegé:</strong> Mové muebles y objetos de valor del área afectada</li>
+              <li><strong>Contactá urgente:</strong> Buscá un plomero de emergencia. Muchos profesionales en ConectaLab tienen servicio 24/7</li>
+            </ol>
+            
+            <p><strong>Si el inodoro se desborda:</strong></p>
+            <ol>
+              <li>Cerrá la llave de paso del inodoro (detrás del inodoro)</li>
+              <li>No uses más ese baño</li>
+              <li>Contactá un plomero urgente</li>
+            </ol>
+            
+            <h6 class="mt-4 mb-2 fw-semibold text-danger">🔥 RIESGO DE INCENDIO</h6>
+            <ol>
+              <li><strong>Evacuá:</strong> Si hay fuego, evacuá a todas las personas inmediatamente</li>
+              <li><strong>Llamá a bomberos:</strong> 100 (Argentina)</li>
+              <li><strong>No intentes apagar:</strong> Si el fuego es grande, no intentes apagarlo solo</li>
+              <li><strong>Cortá servicios:</strong> Si es seguro, cortá gas y electricidad</li>
+            </ol>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">📞 Cómo encontrar profesionales de urgencia</h6>
+            <ul>
+              <li>En ConectaLab, buscá profesionales con etiqueta "Servicio 24/7" o "Emergencias"</li>
+              <li>Llamá directamente: los perfiles verificados incluyen números de contacto</li>
+              <li>Mencioná que es una emergencia al contactar</li>
+              <li>Tené preparados los datos: tipo de problema, ubicación exacta, si ya cortaste servicios</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">💡 Prevención de emergencias</h6>
+            <ul>
+              <li>Conocé dónde están las llaves de paso de agua y gas</li>
+              <li>Sabé dónde está el tablero eléctrico y cómo cortar la luz</li>
+              <li>Tené los números de emergencia a mano</li>
+              <li>Mantené contactos de profesionales de confianza guardados</li>
+            </ul>
+            
+            <div class="alert alert-danger mt-4 mb-0">
+              <i class="bi bi-exclamation-triangle me-2"></i><strong>Recordá:</strong> En caso de riesgo para la vida, llamá primero a los servicios de emergencia (100 - Bomberos, 107 - Emergencias Médicas).
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <a href="servicios.html" class="btn btn-danger">Buscar Emergencias</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Guía 6: Calificar Servicio -->
+    <div class="modal fade" id="modalGuia6" tabindex="-1" aria-labelledby="modalGuia6Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGuia6Label">
+              <i class="bi bi-star text-primary me-2"></i>Cómo Calificar un Servicio
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-semibold mb-3">Guía para dejar reseñas útiles y constructivas</h6>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Por qué es importante calificar</h6>
+            <p>Tu opinión ayuda a:
+            <ul>
+              <li>Otros usuarios a tomar decisiones informadas</li>
+              <li>Profesionales a mejorar sus servicios</li>
+              <li>Construir una comunidad de confianza en ConectaLab</li>
+              <li>Reconocer el buen trabajo de profesionales destacados</li>
+            </ul>
+            </p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Cómo escribir una buena reseña</h6>
+            <p><strong>1. Sé específico y detallado:</strong></p>
+            <ul>
+              <li>Mencioná el tipo de trabajo realizado</li>
+              <li>Describí la experiencia completa, no solo el resultado final</li>
+              <li>Incluí aspectos como puntualidad, limpieza, comunicación, calidad</li>
+            </ul>
+            
+            <p class="mt-3"><strong>2. Sé honesto pero constructivo:</strong></p>
+            <ul>
+              <li>Si hubo problemas, mencionálos de forma objetiva</li>
+              <li>Reconocé también los aspectos positivos</li>
+              <li>Evitá comentarios ofensivos o personales</li>
+            </ul>
+            
+            <p class="mt-3"><strong>3. Incluí información útil:</strong></p>
+            <ul>
+              <li>Tiempo de respuesta del profesional</li>
+              <li>Si cumplió con los plazos acordados</li>
+              <li>Si el precio fue acorde al trabajo</li>
+              <li>Si recomendarías el servicio</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Sistema de calificación</h6>
+            <p><strong>⭐ 5 estrellas:</strong> Excelente servicio, superó expectativas</p>
+            <p><strong>⭐⭐⭐⭐ 4 estrellas:</strong> Muy bueno, cumplió con lo esperado</p>
+            <p><strong>⭐⭐⭐ 3 estrellas:</strong> Aceptable, pero podría mejorar</p>
+            <p><strong>⭐⭐ 2 estrellas:</strong> No cumplió expectativas</p>
+            <p><strong>⭐ 1 estrella:</strong> Servicio deficiente</p>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Cuándo calificar</h6>
+            <ul>
+              <li>Calificá después de que el trabajo esté completamente terminado</li>
+              <li>Dale tiempo suficiente para evaluar la calidad del trabajo</li>
+              <li>Esperá a verificar que todo funcione correctamente</li>
+            </ul>
+            
+            <h6 class="mt-4 mb-2 fw-semibold">Qué evitar</h6>
+            <ul>
+              <li>Calificaciones basadas solo en el precio (bajo o alto)</li>
+              <li>Comentarios sobre aspectos personales del profesional</li>
+              <li>Reseñas falsas o exageradas</li>
+              <li>Calificar sin haber usado realmente el servicio</li>
+            </ul>
+            
+            <div class="alert alert-primary mt-4 mb-0">
+              <i class="bi bi-star-fill me-2"></i><strong>Recordá:</strong> Una reseña honesta y detallada vale más que una calificación alta sin explicación. Tu opinión ayuda a toda la comunidad.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ============================================
          FOOTER
@@ -460,6 +860,9 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
     <!-- JavaScript propio - Defer para mejor performance -->
     <script src="../js/main.js" defer></script>
   </body>

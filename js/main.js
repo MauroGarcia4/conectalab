@@ -6,20 +6,25 @@
 // REGISTRO DE SERVICE WORKER
 // ============================================
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function (registration) {
-                console.log('[Service Worker] Registrado exitosamente:', registration.scope);
+    // Solo registrar si estamos en http/https (no en file://)
+    if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function (registration) {
+                    console.log('[Service Worker] Registrado exitosamente:', registration.scope);
 
-                // Verificar actualizaciones cada hora
-                setInterval(() => {
-                    registration.update();
-                }, 3600000);
-            })
-            .catch(function (error) {
-                console.log('[Service Worker] Error al registrar:', error);
-            });
-    });
+                    // Verificar actualizaciones cada hora
+                    setInterval(() => {
+                        registration.update();
+                    }, 3600000);
+                })
+                .catch(function (error) {
+                    console.log('[Service Worker] Error al registrar:', error);
+                });
+        });
+    } else {
+        console.log('[Service Worker] No disponible en protocolo file://. Usá un servidor local (ver SERVIDOR_LOCAL.md)');
+    }
 }
 
 // ============================================
@@ -135,6 +140,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // 17. ANIMACIONES AOS (Animate On Scroll)
     // ============================================
     initAOS();
+
+    // ============================================
+    // 18. GESTIÓN DE SESIÓN Y NAVBAR
+    // ============================================
+    actualizarEstadoSesion();
+    
+    // Escuchar cambios de sesión
+    if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+                actualizarEstadoSesion();
+            }
+        });
+    }
 });
 
 // ============================================
@@ -413,7 +432,7 @@ function initFormularioContacto() {
     });
 
     // Validación al enviar
-    formulario.addEventListener('submit', function (e) {
+    formulario.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         let esValido = true;
@@ -425,16 +444,53 @@ function initFormularioContacto() {
         });
 
         if (esValido) {
-            // Mostrar mensaje de éxito
-            mostrarMensajeExito(formulario, '¡Mensaje enviado correctamente! Te responderemos a la brevedad.');
+            // Obtener datos del formulario
+            const nombre = formulario.querySelector('#nombre').value.trim();
+            const email = formulario.querySelector('#email-contacto').value.trim();
+            const motivo = formulario.querySelector('#motivo').value;
+            const mensaje = formulario.querySelector('#mensaje').value.trim();
 
-            // Resetear formulario
-            formulario.reset();
+            // Deshabilitar botón mientras procesa
+            const submitBtn = formulario.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
 
-            // Limpiar clases de validación
-            inputs.forEach(input => {
-                input.classList.remove('is-valid', 'is-invalid');
-            });
+            // Guardar en Supabase
+            if (typeof guardarContacto === 'function') {
+                try {
+                    const resultado = await guardarContacto(nombre, email, motivo, mensaje);
+                    
+                    if (resultado.success) {
+                        // Mostrar mensaje de éxito
+                        mostrarMensajeExito(formulario, '¡Mensaje enviado correctamente! Te responderemos a la brevedad.');
+
+                        // Resetear formulario
+                        formulario.reset();
+
+                        // Limpiar clases de validación
+                        inputs.forEach(input => {
+                            input.classList.remove('is-valid', 'is-invalid');
+                        });
+                    } else {
+                        mostrarMensajeError(formulario, resultado.error || 'Error al enviar el mensaje. Intentá nuevamente.');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                } catch (error) {
+                    console.error('Error guardando contacto:', error);
+                    mostrarMensajeError(formulario, 'Error al enviar el mensaje. Intentá nuevamente.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            } else {
+                // Fallback si Supabase no está disponible
+                mostrarMensajeExito(formulario, '¡Mensaje enviado correctamente! Te responderemos a la brevedad.');
+                formulario.reset();
+                inputs.forEach(input => {
+                    input.classList.remove('is-valid', 'is-invalid');
+                });
+            }
         } else {
             // Mostrar mensaje de error
             mostrarMensajeError(formulario, 'Por favor, completá todos los campos correctamente.');
@@ -533,7 +589,7 @@ function initFormularioRegistro() {
     }
 
     // Validación al enviar
-    formulario.addEventListener('submit', function (e) {
+    formulario.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         let esValido = true;
@@ -560,21 +616,50 @@ function initFormularioRegistro() {
         }
 
         if (esValido) {
-            // Mostrar mensaje de éxito
-            mostrarMensajeExito(formulario, '¡Registro exitoso! Ya podés iniciar sesión.');
+            // Deshabilitar botón mientras procesa
+            const submitBtn = formulario.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Registrando...';
 
-            // Resetear formulario
-            formulario.reset();
+            // Registrar usuario en Supabase
+            if (typeof registrarUsuario === 'function') {
+                try {
+                    const resultado = await registrarUsuario(
+                        email.value.trim(),
+                        password.value,
+                        nombre.value.trim()
+                    );
 
-            // Limpiar clases de validación
-            formulario.querySelectorAll('input').forEach(input => {
-                input.classList.remove('is-valid', 'is-invalid');
-            });
+                    if (resultado.success) {
+                        mostrarMensajeExito(formulario, '¡Registro exitoso! Ya podés iniciar sesión.');
+                        formulario.reset();
+                        formulario.querySelectorAll('input').forEach(input => {
+                            input.classList.remove('is-valid', 'is-invalid');
+                        });
 
-            // Redirigir después de 2 segundos
-            setTimeout(() => {
-                window.location.href = 'inicio-sesion.html';
-            }, 2000);
+                        setTimeout(() => {
+                            window.location.href = 'inicio-sesion.html';
+                        }, 2000);
+                    } else {
+                        mostrarMensajeError(formulario, resultado.error || 'Error al registrarse. Intentá nuevamente.');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                } catch (error) {
+                    console.error('Error en registro:', error);
+                    mostrarMensajeError(formulario, 'Error al registrarse. Intentá nuevamente.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            } else {
+                // Fallback si Supabase no está disponible
+                mostrarMensajeExito(formulario, '¡Registro exitoso! Ya podés iniciar sesión.');
+                formulario.reset();
+                setTimeout(() => {
+                    window.location.href = 'inicio-sesion.html';
+                }, 2000);
+            }
         } else {
             mostrarMensajeError(formulario, 'Por favor, completá todos los campos correctamente.');
         }
@@ -664,7 +749,7 @@ function initFormularioLogin() {
     });
 
     // Validación al enviar
-    formulario.addEventListener('submit', function (e) {
+    formulario.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         let esValido = true;
@@ -676,13 +761,64 @@ function initFormularioLogin() {
         });
 
         if (esValido) {
-            // Mostrar mensaje de éxito
-            mostrarMensajeExito(formulario, '¡Inicio de sesión exitoso! Redirigiendo...');
+            // Deshabilitar botón mientras procesa
+            const submitBtn = formulario.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Iniciando sesión...';
 
-            // Simular redirección (en producción sería al dashboard)
-            setTimeout(() => {
-                window.location.href = '../index.html';
-            }, 1500);
+            // Verificar si hay checkbox "recordarme"
+            const recordarme = formulario.querySelector('#recordarme');
+            const recordarSesion = recordarme ? recordarme.checked : false;
+
+            // Iniciar sesión con Supabase
+            if (typeof iniciarSesion === 'function') {
+                try {
+                    const resultado = await iniciarSesion(
+                        email.value.trim(),
+                        password.value
+                    );
+
+                    if (resultado.success) {
+                        // Guardar opción "recordarme" si está marcada
+                        if (recordarSesion) {
+                            localStorage.setItem('recordarme', 'true');
+                            // Guardar credenciales (solo email, nunca password)
+                            localStorage.setItem('remembered_email', email.value.trim());
+                        } else {
+                            localStorage.removeItem('recordarme');
+                            localStorage.removeItem('remembered_email');
+                        }
+
+                        mostrarMensajeExito(formulario, '¡Inicio de sesión exitoso! Redirigiendo...');
+                        
+                        // Actualizar navbar y redirigir
+                        await actualizarEstadoSesion();
+                        
+                        setTimeout(() => {
+                            // Redirigir a index o perfil según preferencia
+                            const redirectPath = window.location.pathname.includes('pages/') ? '../index.html' : 'index.html';
+                            window.location.href = redirectPath;
+                        }, 1000);
+                    } else {
+                        mostrarMensajeError(formulario, resultado.error || 'Credenciales incorrectas. Intentá nuevamente.');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                } catch (error) {
+                    console.error('Error en login:', error);
+                    mostrarMensajeError(formulario, 'Error al iniciar sesión. Intentá nuevamente.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            } else {
+                // Fallback si Supabase no está disponible
+                mostrarMensajeExito(formulario, '¡Inicio de sesión exitoso! Redirigiendo...');
+                setTimeout(() => {
+                    const redirectPath = window.location.pathname.includes('pages/') ? '../index.html' : 'index.html';
+                    window.location.href = redirectPath;
+                }, 1500);
+            }
         } else {
             mostrarMensajeError(formulario, 'Por favor, verificá tus credenciales.');
         }
@@ -1023,104 +1159,62 @@ function initCounters() {
 }
 
 // ============================================
-// FUNCIÓN: Temas Personalizados (Modo Oscuro/Claro + Esquemas de Color)
+// FUNCIÓN: Toggle Modo Oscuro/Claro
 // ============================================
 function initThemeToggle() {
-    const themeOptions = document.querySelectorAll('.theme-option');
+    const themeToggle = document.querySelector('#theme-toggle');
+    const themeIcon = document.querySelector('#theme-icon');
 
-    if (!themeOptions.length) {
-        // Fallback para botón simple si no hay dropdown
-        const themeToggle = document.querySelector('#theme-toggle');
-        const themeIcon = document.querySelector('#theme-icon');
-
-        if (!themeToggle) return;
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-
-        themeToggle.addEventListener('click', function () {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-
-            mostrarToast(`Modo ${newTheme === 'dark' ? 'oscuro' : 'claro'} activado`, 'info');
-        });
-
-        function updateThemeIcon(theme) {
-            if (themeIcon) {
-                if (theme === 'dark') {
-                    themeIcon.className = 'bi bi-sun-fill fs-5';
-                } else {
-                    themeIcon.className = 'bi bi-moon-fill fs-5';
-                }
-            }
-        }
-        return;
-    }
+    if (!themeToggle) return;
 
     // Cargar tema guardado
     const savedTheme = localStorage.getItem('theme') || 'light';
-    const savedColorScheme = localStorage.getItem('colorScheme') || 'blue';
-    applyTheme(savedTheme, savedColorScheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 
-    // Event listeners para opciones de tema
-    themeOptions.forEach(option => {
-        option.addEventListener('click', function (e) {
-            e.preventDefault();
-            const theme = this.getAttribute('data-theme');
+    // Event listener para cambiar tema
+    themeToggle.addEventListener('click', function () {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-            if (theme === 'light' || theme === 'dark') {
-                const currentColor = localStorage.getItem('colorScheme') || 'blue';
-                applyTheme(theme, currentColor);
-                localStorage.setItem('theme', theme);
-                mostrarToast(`Modo ${theme === 'dark' ? 'oscuro' : 'claro'} activado`, 'info');
-            } else {
-                const currentTheme = localStorage.getItem('theme') || 'light';
-                applyTheme(currentTheme, theme);
-                localStorage.setItem('colorScheme', theme);
-                mostrarToast(`Tema ${getThemeName(theme)} activado`, 'success');
-            }
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
 
-            // Cerrar dropdown
-            const dropdown = bootstrap.Dropdown.getInstance(document.querySelector('#theme-toggle'));
-            if (dropdown) dropdown.hide();
-        });
+        // Mostrar notificación opcional (sin toast para no ser intrusivo)
+        // mostrarToast(`Modo ${newTheme === 'dark' ? 'oscuro' : 'claro'} activado`, 'info');
     });
 
-    function applyTheme(mode, colorScheme) {
-        document.documentElement.setAttribute('data-theme', mode);
-        document.documentElement.setAttribute('data-color-scheme', colorScheme);
-
-        // Marcar opción activa
-        themeOptions.forEach(opt => {
-            opt.classList.remove('active');
-            if (opt.getAttribute('data-theme') === mode || opt.getAttribute('data-theme') === colorScheme) {
-                opt.classList.add('active');
+    function updateThemeIcon(theme) {
+        if (themeIcon) {
+            if (theme === 'dark') {
+                themeIcon.className = 'bi bi-sun-fill fs-5';
+                themeIcon.setAttribute('title', 'Cambiar a modo claro');
+            } else {
+                themeIcon.className = 'bi bi-moon-fill fs-5';
+                themeIcon.setAttribute('title', 'Cambiar a modo oscuro');
             }
-        });
-    }
-
-    function getThemeName(scheme) {
-        const names = {
-            blue: 'Azul',
-            green: 'Verde',
-            purple: 'Púrpura',
-            orange: 'Naranja'
-        };
-        return names[scheme] || scheme;
+        }
     }
 }
 
 // ============================================
 // FUNCIÓN: Sistema de Favoritos
 // ============================================
-function initFavoritos() {
-    // Cargar favoritos desde localStorage
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+async function initFavoritos() {
+    // Cargar favoritos (intentar Supabase primero, luego localStorage)
+    let favoritos = [];
+    
+    if (typeof getFavoritosSupabase === 'function') {
+        try {
+            favoritos = await getFavoritosSupabase();
+        } catch (error) {
+            console.error('Error cargando favoritos de Supabase:', error);
+            favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+        }
+    } else {
+        favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    }
 
     // Actualizar contador
     function actualizarContador() {
@@ -1153,7 +1247,7 @@ function initFavoritos() {
             btn.querySelector('i').classList.add('bi-heart-fill', 'text-danger');
         }
 
-        btn.addEventListener('click', function (e) {
+        btn.addEventListener('click', async function (e) {
             e.preventDefault();
             e.stopPropagation();
 
@@ -1161,18 +1255,43 @@ function initFavoritos() {
             const icon = this.querySelector('i');
 
             if (index > -1) {
+                // Eliminar favorito
                 favoritos.splice(index, 1);
                 icon.classList.remove('bi-heart-fill', 'text-danger');
                 icon.classList.add('bi-heart');
                 mostrarToast('Eliminado de favoritos', 'info');
+                
+                // Guardar en Supabase o localStorage
+                if (typeof removeFavoritoSupabase === 'function') {
+                    try {
+                        await removeFavoritoSupabase(servicio);
+                    } catch (error) {
+                        console.error('Error eliminando favorito:', error);
+                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                    }
+                } else {
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                }
             } else {
+                // Agregar favorito
                 favoritos.push(servicio);
                 icon.classList.remove('bi-heart');
                 icon.classList.add('bi-heart-fill', 'text-danger');
                 mostrarToast('Agregado a favoritos', 'success');
+                
+                // Guardar en Supabase o localStorage
+                if (typeof saveFavoritoSupabase === 'function') {
+                    try {
+                        await saveFavoritoSupabase(servicio);
+                    } catch (error) {
+                        console.error('Error guardando favorito:', error);
+                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                    }
+                } else {
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                }
             }
 
-            localStorage.setItem('favoritos', JSON.stringify(favoritos));
             actualizarContador();
             actualizarListaFavoritos();
         });
@@ -1202,10 +1321,22 @@ function initFavoritos() {
 
         // Event listeners para eliminar
         lista.querySelectorAll('.remove-favorito').forEach(btn => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', async function () {
                 const servicio = this.getAttribute('data-servicio');
                 favoritos = favoritos.filter(f => f !== servicio);
-                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                
+                // Guardar en Supabase o localStorage
+                if (typeof removeFavoritoSupabase === 'function') {
+                    try {
+                        await removeFavoritoSupabase(servicio);
+                    } catch (error) {
+                        console.error('Error eliminando favorito:', error);
+                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                    }
+                } else {
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                }
+                
                 actualizarContador();
                 actualizarListaFavoritos();
                 mostrarToast('Eliminado de favoritos', 'info');
@@ -1221,7 +1352,8 @@ function initFavoritos() {
             if (favoritos.length === 0) {
                 mostrarToast('No tenés favoritos aún', 'info');
             } else {
-                window.location.href = 'pages/perfil.html#favoritos';
+                const redirectPath = window.location.pathname.includes('pages/') ? 'perfil.html#favoritos' : 'pages/perfil.html#favoritos';
+                window.location.href = redirectPath;
             }
         });
     }
@@ -1730,19 +1862,6 @@ function initAccesibilidad() {
         }
     });
 
-    // Skip link
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.className = 'skip-link';
-    skipLink.textContent = 'Saltar al contenido principal';
-    skipLink.style.cssText = 'position: absolute; top: -40px; left: 0; background: #2563eb; color: white; padding: 8px; z-index: 10000; text-decoration: none;';
-    skipLink.addEventListener('focus', function () {
-        this.style.top = '0';
-    });
-    skipLink.addEventListener('blur', function () {
-        this.style.top = '-40px';
-    });
-    document.body.insertBefore(skipLink, document.body.firstChild);
 }
 
 // ============================================
@@ -1776,5 +1895,94 @@ function initNewsletter() {
         mostrarToast('¡Te suscribiste exitosamente al newsletter!', 'success');
         emailInput.value = '';
     });
+}
+
+// ============================================
+// FUNCIÓN: Actualizar Estado de Sesión y Navbar
+// ============================================
+async function actualizarEstadoSesion() {
+    // Obtener usuario actual
+    let usuario = null;
+    if (typeof getUsuarioActual === 'function') {
+        usuario = await getUsuarioActual();
+    } else if (typeof tieneSesionActiva === 'function' && tieneSesionActiva()) {
+        const session = localStorage.getItem('user_session');
+        usuario = session ? JSON.parse(session) : null;
+    }
+
+    // Elementos del navbar
+    const perfilLink = document.querySelector('#perfil-link');
+    const loginLink = document.querySelector('#login-link');
+    const registroLink = document.querySelector('#registro-link');
+    const logoutBtn = document.querySelector('#logout-btn');
+    const userMenu = document.querySelector('#user-menu');
+    const userMenuText = document.querySelector('#user-menu-text');
+
+    if (usuario) {
+        // Usuario logueado - mostrar perfil y ocultar login/registro
+        if (perfilLink) {
+            perfilLink.style.display = 'block';
+            // Corregir ruta según ubicación
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('pages/')) {
+                perfilLink.href = 'perfil.html';
+            } else {
+                perfilLink.href = 'pages/perfil.html';
+            }
+        }
+        if (loginLink) loginLink.style.display = 'none';
+        if (registroLink) registroLink.style.display = 'none';
+        if (logoutBtn) logoutBtn.style.display = 'block';
+        if (userMenuText) {
+            userMenuText.textContent = usuario.nombre || usuario.email;
+        }
+    } else {
+        // Usuario no logueado - ocultar perfil y mostrar login/registro
+        if (perfilLink) perfilLink.style.display = 'none';
+        if (loginLink) loginLink.style.display = 'block';
+        if (registroLink) registroLink.style.display = 'block';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        if (userMenuText) {
+            userMenuText.textContent = 'Usuario';
+        }
+    }
+}
+
+// ============================================
+// FUNCIÓN: Cerrar Sesión
+// ============================================
+async function cerrarSesionUsuario() {
+    if (typeof cerrarSesion === 'function') {
+        await cerrarSesion();
+    } else {
+        localStorage.removeItem('user_session');
+    }
+    
+    await actualizarEstadoSesion();
+    
+    // Redirigir a inicio
+    const redirectPath = window.location.pathname.includes('pages/') ? '../index.html' : 'index.html';
+    window.location.href = redirectPath;
+}
+
+// Agregar listener para botón de logout cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoutBtn = document.querySelector('#logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                await cerrarSesionUsuario();
+            });
+        }
+    });
+} else {
+    const logoutBtn = document.querySelector('#logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            await cerrarSesionUsuario();
+        });
+    }
 }
 

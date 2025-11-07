@@ -27,16 +27,110 @@
   <link href="../css/styles.css" rel="stylesheet">
 </head>
 <body class="auth-body" id="top">
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  <!-- ============================================
+       HEADER / NAVEGACIÓN
+       ============================================ -->
   <header class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="../index.html" aria-label="Inicio ConectaLab">
+      <a
+        class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2"
+        href="../index.html"
+        aria-label="Inicio ConectaLab"
+      >
         <span class="fs-4">⚡</span>
         <span>ConectaLab</span>
       </a>
-      <nav class="ms-auto">
-        <a href="inicio-sesion.html" class="btn btn-outline-primary btn-sm">Iniciar sesión</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainMenu"
+        aria-controls="mainMenu"
+        aria-expanded="false"
+        aria-label="Abrir menú"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <nav id="mainMenu" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="servicios.html">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacto.html">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="guias.html">Guías</a>
+          </li>
+          
+          <!-- Selector de Temas -->
+          <li class="nav-item ms-lg-3">
+            <button
+              id="theme-toggle"
+              class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+              type="button"
+              aria-label="Cambiar tema"
+              style="width: 38px; height: 38px"
+              title="Cambiar entre modo claro y oscuro"
+            >
+              <i class="bi bi-moon-fill fs-5" id="theme-icon"></i>
+            </button>
+          </li>
+          
+          <!-- Menú de Usuario -->
+          <li class="nav-item dropdown ms-lg-2">
+            <button
+              class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center position-relative"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="width: 38px; height: 38px"
+              aria-label="Menú de usuario"
+            >
+              <i class="bi bi-person-fill fs-5"></i>
+              <span id="favoritos-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">
+                0
+              </span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
+              <li>
+                <a class="dropdown-item" href="inicio-sesion.html" id="login-link">
+                  <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item active" href="registro.html" id="registro-link" aria-current="page">
+                  <i class="bi bi-person-plus me-2"></i>Registrarse
+                </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="perfil.html" id="perfil-link" style="display: none;">
+                  <i class="bi bi-person-circle me-2"></i>Mi Perfil
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="favoritos-link">
+                  <i class="bi bi-heart me-2"></i>Favoritos
+                  <span id="favoritos-count" class="badge bg-primary rounded-pill ms-2">0</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item text-danger" href="#" id="logout-btn" style="display: none;">
+                  <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -184,22 +278,79 @@
     </div>
   </main>
 
-  <footer class="bg-dark text-white text-center py-4">
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="py-5 bg-dark text-white">
     <div class="container">
-      <div class="fw-semibold mb-2">
-        © 2025 ConectaLab | Todos los derechos reservados.
+      <div class="row g-4 mb-4">
+        <div class="col-md-4">
+          <h5 class="fw-bold mb-3">
+            <span class="fs-4">⚡</span> ConectaLab
+          </h5>
+          <p class="text-white-50 small">
+            Conectamos profesionales con clientes en San Nicolás de los Arroyos y alrededores.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="fw-bold mb-3">Enlaces rápidos</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="servicios.html" class="text-white-50 text-decoration-none small">Servicios</a>
+            </li>
+            <li class="mb-2">
+              <a href="sobre.html" class="text-white-50 text-decoration-none small">Sobre Nosotros</a>
+            </li>
+            <li class="mb-2">
+              <a href="contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+            </li>
+            <li class="mb-2">
+              <a href="guias.html" class="text-white-50 text-decoration-none small">Guías</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5 class="fw-bold mb-3">Seguinos</h5>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-white-50 fs-5" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="text-white-50 fs-5" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="text-white-50 fs-5" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+        </div>
       </div>
-      <nav class="footer-links d-flex justify-content-center align-items-center gap-3 flex-wrap small">
-        <a href="contacto.html" class="link-light text-decoration-none">Contacto</a>
-        <span class="text-white-50">•</span>
-        <a href="politica-privacidad.html" class="link-light text-decoration-none">Política de Privacidad</a>
-        <span class="text-white-50">•</span>
-        <a href="terminos-condiciones.html" class="link-light text-decoration-none">Términos y Condiciones</a>
-      </nav>
+      <hr class="border-secondary" />
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center mb-3">
+            <small class="text-white-50">© 2025 ConectaLab | Todos los derechos reservados.</small>
+          </div>
+          <nav
+            class="footer-links d-flex justify-content-center align-items-center gap-3 flex-wrap"
+            aria-label="Enlaces legales"
+          >
+            <a href="contacto.html" class="text-white-50 text-decoration-none small">Contacto</a>
+            <span class="text-white-50">•</span>
+            <a href="guias.html" class="text-white-50 text-decoration-none small">Guías</a>
+            <span class="text-white-50">•</span>
+            <a href="politica-privacidad.html" class="text-white-50 text-decoration-none small">Política de Privacidad</a>
+            <span class="text-white-50">•</span>
+            <a href="terminos-condiciones.html" class="text-white-50 text-decoration-none small">Términos y Condiciones</a>
+          </nav>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-config.js"></script>
   <!-- JavaScript propio -->
   <script src="../js/main.js"></script>
 </body>
