@@ -22,10 +22,11 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Professional Services Directory",
+      "@type": "ItemList",
       "name": "Servicios Profesionales en ConectaLab",
       "description": "Directorio de servicios profesionales en San Nicolás de los Arroyos",
+      "url": "https://conectalab.com.ar/pages/servicios.html",
+      "numberOfItems": 50,
       "provider": {
         "@type": "LocalBusiness",
         "name": "ConectaLab",
@@ -34,17 +35,62 @@
           "addressLocality": "San Nicolás de los Arroyos",
           "addressRegion": "Buenos Aires",
           "addressCountry": "AR"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+54-336-402-2033",
+          "contactType": "customer service",
+          "email": "contacto@conectalab.com.ar"
         }
       },
       "areaServed": {
         "@type": "City",
         "name": "San Nicolás de los Arroyos"
       },
-      "availableChannel": {
-        "@type": "ServiceChannel",
-        "serviceUrl": "https://conectalab.com.ar/pages/servicios.html",
-        "serviceType": "Online"
-      }
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "name": "Electricistas",
+            "description": "Instalaciones, tableros y mantenimiento general de electricidad",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "ConectaLab"
+            },
+            "areaServed": "San Nicolás de los Arroyos"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "name": "Plomería",
+            "description": "Reparaciones e instalaciones de plomería",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "ConectaLab"
+            },
+            "areaServed": "San Nicolás de los Arroyos"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "name": "Diseño Gráfico",
+            "description": "Identidad visual, branding y diseño web",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "ConectaLab"
+            },
+            "areaServed": "San Nicolás de los Arroyos"
+          }
+        }
+      ]
     }
     </script>
     
@@ -57,49 +103,11 @@
     <!-- Favicon -->
     <link rel="icon" href="../img/favicon.webp" type="image/webp" />
     
-    <!-- Structured Data (Schema.org) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "Servicios Profesionales en ConectaLab",
-      "description": "Lista de servicios profesionales disponibles en San Nicolás de los Arroyos",
-      "url": "https://conectalab.com.ar/pages/servicios.html",
-      "numberOfItems": 50,
-      "itemListElement": [
-        {
-          "@type": "Service",
-          "name": "Electricistas",
-          "description": "Instalaciones, tableros y mantenimiento general de electricidad",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "ConectaLab"
-          },
-          "areaServed": "San Nicolás de los Arroyos"
-        },
-        {
-          "@type": "Service",
-          "name": "Plomería",
-          "description": "Reparaciones e instalaciones de plomería",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "ConectaLab"
-          },
-          "areaServed": "San Nicolás de los Arroyos"
-        },
-        {
-          "@type": "Service",
-          "name": "Diseño Gráfico",
-          "description": "Identidad visual, branding y diseño web",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "ConectaLab"
-          },
-          "areaServed": "San Nicolás de los Arroyos"
-        }
-      ]
-    }
-    </script>
+    <!-- Preconnect para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
     <!-- Google Analytics - Carga diferida para no bloquear render -->
     <script>

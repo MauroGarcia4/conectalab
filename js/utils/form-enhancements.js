@@ -5,6 +5,86 @@
 (function() {
     'use strict';
 
+    // Función para validar fortaleza de contraseña
+    function getPasswordStrength(password) {
+        let strength = 0;
+        let feedback = [];
+
+        if (password.length >= 8) strength++;
+        else feedback.push('Mínimo 8 caracteres');
+
+        if (password.length >= 12) strength++;
+
+        if (/[a-z]/.test(password)) strength++;
+        else feedback.push('Incluir letras minúsculas');
+
+        if (/[A-Z]/.test(password)) strength++;
+        else feedback.push('Incluir letras mayúsculas');
+
+        if (/[0-9]/.test(password)) strength++;
+        else feedback.push('Incluir números');
+
+        if (/[^a-zA-Z0-9]/.test(password)) strength++;
+        else feedback.push('Incluir caracteres especiales');
+
+        if (strength <= 2) return { level: 'weak', score: strength, feedback };
+        if (strength <= 4) return { level: 'medium', score: strength, feedback };
+        return { level: 'strong', score: strength, feedback: [] };
+    }
+
+    // Mostrar indicador de fortaleza de contraseña
+    function initPasswordStrengthIndicator() {
+        const passwordInput = document.getElementById('password-registro');
+        const strengthContainer = document.getElementById('password-strength-container');
+        
+        if (passwordInput && strengthContainer) {
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strength = getPasswordStrength(password);
+                const container = document.getElementById('password-strength-container');
+                
+                if (password.length === 0) {
+                    container.innerHTML = '';
+                    return;
+                }
+
+                let strengthHTML = '<div class="d-flex align-items-center gap-2 mb-1">';
+                strengthHTML += '<span class="small fw-semibold">Fortaleza:</span>';
+                
+                // Barra de progreso
+                strengthHTML += '<div class="flex-grow-1 progress" style="height: 6px;">';
+                strengthHTML += '<div class="progress-bar';
+                
+                if (strength.level === 'weak') {
+                    strengthHTML += ' bg-danger';
+                } else if (strength.level === 'medium') {
+                    strengthHTML += ' bg-warning';
+                } else {
+                    strengthHTML += ' bg-success';
+                }
+                
+                const percentage = (strength.score / 6) * 100;
+                strengthHTML += `" role="progressbar" style="width: ${percentage}%" aria-valuenow="${strength.score}" aria-valuemin="0" aria-valuemax="6"></div>`;
+                strengthHTML += '</div>';
+                strengthHTML += `<span class="small text-muted">${strength.level === 'weak' ? 'Débil' : strength.level === 'medium' ? 'Media' : 'Fuerte'}</span>`;
+                strengthHTML += '</div>';
+
+                // Feedback
+                if (strength.feedback.length > 0) {
+                    strengthHTML += '<div class="small text-muted mt-1">';
+                    strengthHTML += '<ul class="mb-0 ps-3" style="font-size: 0.85rem;">';
+                    strength.feedback.forEach(item => {
+                        strengthHTML += `<li>${item}</li>`;
+                    });
+                    strengthHTML += '</ul>';
+                    strengthHTML += '</div>';
+                }
+
+                container.innerHTML = strengthHTML;
+            });
+        }
+    }
+
     // Contador de caracteres para textarea
     function initCharacterCounter() {
         const textarea = document.getElementById('mensaje');
@@ -125,6 +205,7 @@
         initCharacterCounter();
         initFormValidation();
         initLoadingStates();
+        initPasswordStrengthIndicator();
     });
 })();
 

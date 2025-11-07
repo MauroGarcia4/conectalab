@@ -2,6 +2,22 @@
 // SERVICE WORKER - ConectaLab PWA
 // ============================================
 
+// Detectar si estamos en desarrollo
+const isDevelopment = self.location.hostname === 'localhost' || 
+                     self.location.hostname === '127.0.0.1';
+
+// Logger condicional para service worker
+const log = (...args) => {
+    if (isDevelopment) {
+        console.log(...args);
+    }
+};
+
+const logError = (...args) => {
+    // Los errores siempre se muestran
+    console.error(...args);
+};
+
 const CACHE_NAME = 'conectalab-v1.0.0';
 const RUNTIME_CACHE = 'conectalab-runtime';
 
@@ -42,17 +58,17 @@ const NETWORK_FIRST_PATTERNS = [
 // INSTALL - Cachear assets estáticos
 // ============================================
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Instalando...');
+  log('[Service Worker] Instalando...');
   
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('[Service Worker] Cacheando assets estáticos');
+        log('[Service Worker] Cacheando assets estáticos');
         return cache.addAll(STATIC_ASSETS);
       })
       .then(() => self.skipWaiting())
       .catch((error) => {
-        console.error('[Service Worker] Error al cachear:', error);
+        logError('[Service Worker] Error al cachear:', error);
       })
   );
 });
@@ -61,7 +77,7 @@ self.addEventListener('install', (event) => {
 // ACTIVATE - Limpiar caches antiguos
 // ============================================
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activando...');
+  log('[Service Worker] Activando...');
   
   event.waitUntil(
     caches.keys()
@@ -69,7 +85,7 @@ self.addEventListener('activate', (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheName !== CACHE_NAME && cacheName !== RUNTIME_CACHE) {
-              console.log('[Service Worker] Eliminando cache antiguo:', cacheName);
+              log('[Service Worker] Eliminando cache antiguo:', cacheName);
               return caches.delete(cacheName);
             }
           })
@@ -127,7 +143,7 @@ async function cacheFirst(request) {
     }
     return response;
   } catch (error) {
-    console.error('[Service Worker] Error en cacheFirst:', error);
+    logError('[Service Worker] Error en cacheFirst:', error);
     // Retornar página offline si es HTML
     if (request.headers.get('accept').includes('text/html')) {
       return cache.match('/index.html');
@@ -149,7 +165,7 @@ async function networkFirst(request) {
     }
     return response;
   } catch (error) {
-    console.log('[Service Worker] Network falló, usando cache:', error);
+    log('[Service Worker] Network falló, usando cache:', error);
     const cached = await cache.match(request);
     if (cached) {
       return cached;

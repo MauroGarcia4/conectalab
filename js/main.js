@@ -5,10 +5,14 @@
 // Error Tracking - Capturar errores desde el inicio
 if (typeof errorTracker !== 'undefined') {
     // El error tracker ya está cargado desde el HTML
-    console.log('[ConectaLab] Error tracker inicializado');
+    if (typeof logger !== 'undefined') {
+        logger.log('[ConectaLab] Error tracker inicializado');
+    }
 } else {
     // Fallback si no se cargó el error tracker
-    console.warn('[ConectaLab] Error tracker no disponible');
+    if (typeof logger !== 'undefined') {
+        logger.warn('[ConectaLab] Error tracker no disponible');
+    }
 }
 
 // ============================================
@@ -20,7 +24,9 @@ if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('/sw.js')
                 .then(function (registration) {
-                    console.log('[Service Worker] Registrado exitosamente:', registration.scope);
+                    if (typeof logger !== 'undefined') {
+                        logger.log('[Service Worker] Registrado exitosamente:', registration.scope);
+                    }
 
                     // Verificar actualizaciones cada hora
                     setInterval(() => {
@@ -28,11 +34,15 @@ if ('serviceWorker' in navigator) {
                     }, 3600000);
                 })
                 .catch(function (error) {
-                    console.log('[Service Worker] Error al registrar:', error);
+                    if (typeof logger !== 'undefined') {
+                        logger.log('[Service Worker] Error al registrar:', error);
+                    }
                 });
         });
     } else {
-        console.log('[Service Worker] No disponible en protocolo file://. Usá un servidor local (ver SERVIDOR_LOCAL.md)');
+        if (typeof logger !== 'undefined') {
+            logger.log('[Service Worker] No disponible en protocolo file://. Usá un servidor local (ver SERVIDOR_LOCAL.md)');
+        }
     }
 }
 
@@ -620,7 +630,9 @@ function initFormularioContacto() {
                         submitBtn.innerHTML = originalText;
                     }
                 } catch (error) {
-                    console.error('Error guardando contacto:', error);
+                    if (typeof logger !== 'undefined') {
+                        logger.error('Error guardando contacto:', error);
+                    }
                     mostrarMensajeError(formulario, 'Error al enviar el mensaje. Intentá nuevamente.');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
@@ -789,7 +801,9 @@ function initFormularioRegistro() {
                         submitBtn.innerHTML = originalText;
                     }
                 } catch (error) {
-                    console.error('Error en registro:', error);
+                    if (typeof logger !== 'undefined') {
+                        logger.error('Error en registro:', error);
+                    }
                     mostrarMensajeError(formulario, 'Error al registrarse. Intentá nuevamente.');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
@@ -948,7 +962,9 @@ function initFormularioLogin() {
                         submitBtn.innerHTML = originalText;
                     }
                 } catch (error) {
-                    console.error('Error en login:', error);
+                    if (typeof logger !== 'undefined') {
+                        logger.error('Error en login:', error);
+                    }
                     mostrarMensajeError(formulario, 'Error al iniciar sesión. Intentá nuevamente.');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
@@ -1351,7 +1367,9 @@ async function initFavoritos() {
         try {
             favoritos = await getFavoritosSupabase();
         } catch (error) {
-            console.error('Error cargando favoritos de Supabase:', error);
+            if (typeof logger !== 'undefined') {
+                logger.error('Error cargando favoritos de Supabase:', error);
+            }
             favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
         }
     } else {
@@ -1408,7 +1426,9 @@ async function initFavoritos() {
                     try {
                         await removeFavoritoSupabase(servicio);
                     } catch (error) {
-                        console.error('Error eliminando favorito:', error);
+                        if (typeof logger !== 'undefined') {
+                            logger.error('Error eliminando favorito:', error);
+                        }
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
                     }
                 } else {
@@ -1426,7 +1446,9 @@ async function initFavoritos() {
                     try {
                         await saveFavoritoSupabase(servicio);
                     } catch (error) {
-                        console.error('Error guardando favorito:', error);
+                        if (typeof logger !== 'undefined') {
+                            logger.error('Error guardando favorito:', error);
+                        }
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
                     }
                 } else {
@@ -1472,7 +1494,9 @@ async function initFavoritos() {
                     try {
                         await removeFavoritoSupabase(servicio);
                     } catch (error) {
-                        console.error('Error eliminando favorito:', error);
+                        if (typeof logger !== 'undefined') {
+                            logger.error('Error eliminando favorito:', error);
+                        }
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
                     }
                 } else {

@@ -1,0 +1,17 @@
+# robots.txt para ConectaLab
+# https://conectalab.com.ar/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /pages/inicio-sesion.html
+Disallow: /pages/registro.html
+Disallow: /pages/recuperar-password.html
+Disallow: /pages/reset-password.html
+Disallow: /pages/perfil.html
+
+# Sitemap
+Sitemap: https://conectalab.com.ar/sitemap.xml
+
+# Crawl-delay para ser respetuoso con los servidores
+Crawl-delay: 1
+
