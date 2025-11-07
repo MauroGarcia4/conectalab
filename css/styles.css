@@ -46,9 +46,9 @@ body {
   padding: 0;
 }
 
-/* Cuando las fuentes carguen, aplicar Poppins */
+/* Cuando las fuentes carguen, aplicar Inter como principal */
 .fonts-loaded body {
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+  font-family: "Inter", "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     "Helvetica Neue", Arial, sans-serif;
 }
 
